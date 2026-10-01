@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026 국내·해외 주요 학술대회 연간 캘린더</title>
+<script>
+/* 저장된 테마를 그리기 전에 적용 (깜빡임 방지) */
+(function(){try{var t=localStorage.getItem("congress-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --ink:#16202A; --muted:#5B6872; --faint:#8A96A0;
+  --rule:#D9DFE4; --rule-soft:#E8ECEF;
+  --cardio:#2754C5; --cardio-bg:#E8EEFB;
+  --endo:#C2410C;   --endo-bg:#FDEADF;
+  --neuro:#AE2F6B;  --neuro-bg:#FBE7F0;
+  --renal:#4A7A0C;  --renal-bg:#EBF4DC;
+  --gi:#0B7A6F;     --gi-bg:#E2F3F1;
+  --onc:#6D3FC4;    --onc-bg:#EFE9FB;
+  --etc:#5F6B78;    --etc-bg:#ECEFF2;
+  --ent:#0A84AD;    --ent-bg:#E0F2F9;
+  --peds:#9A6A00;   --peds-bg:#FBF1D6;
+  --ortho:#7A4A22;  --ortho-bg:#F3E9DE;
+  --surg:#B5173F;   --surg-bg:#FCE6EC;
+  --hema:#1E3A8A;   --hema-bg:#E3E9F8;
+  --obgyn:#C2477F;  --obgyn-bg:#FBE8F1;
+  --derm:#0E8F6A;   --derm-bg:#DFF5EC;
+  --rheum:#B7791F;  --rheum-bg:#FBF0DC;
+  --kr:#16202A; --intl:#0F5F8C;
+  --today:#D7263D;
+  --ok:#17803D; --ok-bg:#E3F4E8; --none:#B42318; --none-bg:#FDE8E6; --part:#8A5A00; --part-bg:#FBF0DA;
+  --font:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#10161C; --surface:#18212A; --ink:#E6EBEF; --muted:#A3AEB8; --faint:#7C8893;
+    --rule:#2C3743; --rule-soft:#232D37;
+    --cardio:#7FA2F5; --cardio-bg:#1D2A47; --endo:#F0A24B; --endo-bg:#3A2A12;
+    --neuro:#F07FB2; --neuro-bg:#3D1C2C; --renal:#9BCB5A; --renal-bg:#223216;
+    --gi:#4CC2B4; --gi-bg:#15322F; --onc:#B596F0; --onc-bg:#2A2142; --etc:#A9B3BD; --etc-bg:#252E37;
+    --ent:#4FC3EA; --ent-bg:#123341; --peds:#F2C94C; --peds-bg:#3A3112; --ortho:#D9A877; --ortho-bg:#382A1C; --surg:#FF7A98; --surg-bg:#3D1822;
+    --hema:#A5B4FC; --hema-bg:#1F2547; --obgyn:#F9A8D4; --obgyn-bg:#3D1C2E; --derm:#34D399; --derm-bg:#123326; --rheum:#FBBF24; --rheum-bg:#3A2E10;
+    --kr:#E6EBEF; --intl:#6CC0EE; --today:#FF5A6E;
+    --ok:#5BCB83; --ok-bg:#16301F; --none:#FF7B6E; --none-bg:#3D1C19; --part:#E8C26A; --part-bg:#3A2E12;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#10161C; --surface:#18212A; --ink:#E6EBEF; --muted:#A3AEB8; --faint:#7C8893;
+  --rule:#2C3743; --rule-soft:#232D37;
+  --cardio:#7FA2F5; --cardio-bg:#1D2A47; --endo:#F0A24B; --endo-bg:#3A2A12;
+  --neuro:#F07FB2; --neuro-bg:#3D1C2C; --renal:#9BCB5A; --renal-bg:#223216;
+  --gi:#4CC2B4; --gi-bg:#15322F; --onc:#B596F0; --onc-bg:#2A2142; --etc:#A9B3BD; --etc-bg:#252E37;
+    --ent:#4FC3EA; --ent-bg:#123341; --peds:#F2C94C; --peds-bg:#3A3112; --ortho:#D9A877; --ortho-bg:#382A1C; --surg:#FF7A98; --surg-bg:#3D1822;
+    --hema:#A5B4FC; --hema-bg:#1F2547; --obgyn:#F9A8D4; --obgyn-bg:#3D1C2E; --derm:#34D399; --derm-bg:#123326; --rheum:#FBBF24; --rheum-bg:#3A2E10;
+  --kr:#E6EBEF; --intl:#6CC0EE; --today:#FF5A6E;
+  --ok:#5BCB83; --ok-bg:#16301F; --none:#FF7B6E; --none-bg:#3D1C19; --part:#E8C26A; --part-bg:#3A2E12;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding:28px 24px 64px}
+
+/* Top bar */
+.topbar{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.btn{border:1px solid var(--rule);background:var(--surface);color:var(--ink);font:600 13px var(--font);padding:8px 14px;border-radius:9px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn svg{width:16px;height:16px}
+
+header.top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:24px}
+h1{font-size:clamp(24px,3.4vw,38px);line-height:1.15;margin:0;font-weight:700;letter-spacing:-0.02em}
+.lede{margin:10px 0 0;color:var(--muted);max-width:70ch}
+.stats{display:flex;gap:28px;text-align:right}
+.stat b{display:block;font-size:28px;font-weight:700;line-height:1}
+.stat span{font-size:12.5px;color:var(--muted)}
+
+/* Year board (desktop) */
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px 18px 14px;margin-bottom:22px}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.board-head h2{font-size:15px;margin:0;font-weight:600}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.board-scroll{overflow-x:auto}
+.year{position:relative;min-width:1040px;display:grid;grid-template-columns:64px 1fr}
+.months{grid-column:2;display:grid;grid-template-columns:repeat(12,1fr);border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.months div{padding:0 0 6px 6px;border-left:1px solid var(--rule-soft)}
+.rowlabel{grid-column:1;font-size:13px;font-weight:700;padding-top:8px;border-bottom:1px solid var(--rule)}
+.rowlabel small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.rowlabel.intl{color:var(--intl)}
+.lanes{grid-column:2;position:relative;border-bottom:1px solid var(--rule)}
+.lanes.intl{background:repeating-linear-gradient(135deg,transparent 0 8px,var(--rule-soft) 8px 9px)}
+.lanes .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);pointer-events:none}
+.lanes .grid div{border-left:1px solid var(--rule-soft)}
+.bar{position:absolute;height:18px;border-radius:5px;border:0;padding:0 6px;font:500 11px/18px var(--font);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;text-align:left}
+:root[data-theme="dark"] .bar{color:#10161C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar{color:#10161C}}
+.bar.past{opacity:.38}
+.bar:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bar.cardio{background:var(--cardio)} .bar.endo{background:var(--endo)} .bar.neuro{background:var(--neuro)}
+.bar.renal{background:var(--renal)} .bar.gi{background:var(--gi)} .bar.onc{background:var(--onc)} .bar.etc{background:var(--etc)}
+.todayline{position:absolute;top:0;bottom:0;width:2px;background:var(--today);pointer-events:none;z-index:2}
+.todayline span{position:absolute;top:2px;left:6px;font-size:11px;font-weight:600;color:var(--today);white-space:nowrap;background:var(--surface);padding:0 3px;border-radius:3px}
+
+/* Year board (mobile, vertical) */
+.mboard{display:none}
+.mmonth{background:var(--surface);border:1px solid var(--rule);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.mmonth.current{border-color:var(--today);box-shadow:inset 3px 0 0 var(--today)}
+.mmonth summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;cursor:pointer;font-weight:700}
+.mmonth summary::-webkit-details-marker{display:none}
+.mmonth summary .cnt{font-size:12px;font-weight:500;color:var(--muted)}
+.mmonth summary .now{font-size:11px;font-weight:700;color:var(--today);margin-left:8px}
+.mmonth summary .chev{transition:transform .2s;color:var(--muted)}
+.mmonth[open] summary .chev{transform:rotate(90deg)}
+.mgroup{padding:0 14px 10px}
+.mgroup h4{margin:4px 0 6px;font-size:12px;color:var(--muted);font-weight:700}
+.mgroup.intl h4{color:var(--intl)}
+.mitem{display:grid;grid-template-columns:8px 64px 1fr auto;gap:8px;align-items:center;width:100%;border:0;background:transparent;color:inherit;text-align:left;padding:7px 0;border-top:1px solid var(--rule-soft);font:14px var(--font);cursor:pointer}
+.mitem .dot{width:8px;height:8px;border-radius:2px}
+.mitem .md{font-size:12.5px;font-weight:600;white-space:nowrap}
+.mitem .mn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mitem .ms{font-size:11px;color:var(--muted);white-space:nowrap}
+.mitem.past{opacity:.5}
+.mempty{font-size:12.5px;color:var(--faint);padding:2px 0 6px}
+
+/* Controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 14px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:9px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;color:var(--muted);font:500 13px var(--font);padding:7px 13px;cursor:pointer;border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--rule);background:var(--surface);color:var(--muted);font:500 13px var(--font);padding:6px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{color:var(--c);background:var(--cb);border-color:var(--c)}
+.chip.cardio,.cat.cardio{--c:var(--cardio);--cb:var(--cardio-bg)} .chip.endo,.cat.endo{--c:var(--endo);--cb:var(--endo-bg)}
+.chip.neuro,.cat.neuro{--c:var(--neuro);--cb:var(--neuro-bg)} .chip.renal,.cat.renal{--c:var(--renal);--cb:var(--renal-bg)}
+.chip.gi,.cat.gi{--c:var(--gi);--cb:var(--gi-bg)} .chip.onc,.cat.onc{--c:var(--onc);--cb:var(--onc-bg)} .chip.etc,.cat.etc{--c:var(--etc);--cb:var(--etc-bg)}
+.search{flex:1 1 200px;min-width:180px;max-width:320px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:9px;padding:8px 12px;font:14px var(--font)}
+.count{font-size:13px;color:var(--muted);margin-left:auto}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--cardio);outline-offset:2px}
+
+/* Table */
+.tablebox{background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow-x:auto}
+table.main{width:100%;border-collapse:collapse;min-width:1160px}
+table.main thead th{text-align:left;font-size:12.5px;font-weight:600;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.main tbody td{padding:14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;font-size:14px}
+table.main tbody tr{transition:background-color .6s}
+table.main tbody tr.flash{background:var(--cardio-bg)}
+table.main tbody tr.past td{color:var(--muted)}
+tr.monthsep td{background:var(--bg);font-size:12.5px;font-weight:700;color:var(--muted);padding:7px 14px!important;border-bottom:1px solid var(--rule)}
+td.when{width:170px;border-left:4px solid var(--rule)}
+tr.cardio td.when{border-left-color:var(--cardio)} tr.endo td.when{border-left-color:var(--endo)}
+tr.neuro td.when{border-left-color:var(--neuro)} tr.renal td.when{border-left-color:var(--renal)}
+tr.gi td.when{border-left-color:var(--gi)} tr.onc td.when{border-left-color:var(--onc)} tr.etc td.when{border-left-color:var(--etc)}
+.d1{font-weight:700;font-size:15px;white-space:nowrap}
+.time{font-size:12.5px;color:var(--muted);margin-top:4px}
+.status{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:5px}
+.status.up{background:var(--ink);color:var(--bg)} .status.soon{background:var(--today);color:#fff}
+.status.live{background:var(--ok);color:#fff} .status.done{background:var(--rule-soft);color:var(--muted)}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
+.cat,.reg{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:5px}
+.cat{color:var(--c);background:var(--cb)}
+.reg.kr{border:1px solid var(--rule);color:var(--kr)}
+.reg.intl{background:var(--intl);color:#fff}
+.reg.krintl{border:1px dashed var(--intl);color:var(--intl)}
+.soc{font-weight:700}
+.ev{font-size:13.5px;margin-top:2px}
+.venue{font-weight:600}
+.vd{font-size:12.5px;color:var(--muted)}
+td.credit{width:130px;font-size:13px}
+td.notes{width:320px}
+td.notes ul{margin:0;padding-left:16px}
+td.notes li{margin:0 0 4px;font-size:13px}
+li.fixnote{color:var(--part)}
+li.overlap{color:var(--today)}
+.vbadge{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:5px;white-space:nowrap}
+.vbadge.ok{background:var(--ok-bg);color:var(--ok)} .vbadge.partial{background:var(--part-bg);color:var(--part)} .vbadge.none{background:var(--none-bg);color:var(--none)}
+td.src{width:150px}
+td.src a{display:block;font-size:12.5px;color:var(--cardio);text-decoration:none;margin-bottom:4px;word-break:keep-all}
+td.src a:hover{text-decoration:underline}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+
+.lower{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:22px}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px 22px}
+.panel h3{margin:0 0 12px;font-size:16px}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin-bottom:8px;font-size:13.5px;max-width:72ch}
+.panel li b{font-weight:600}
+.foot{margin-top:26px;font-size:12.5px;color:var(--faint);max-width:92ch}
+.foot a{color:var(--muted)}
+
+/* Print dialog */
+dialog.pd{border:1px solid var(--rule);border-radius:14px;background:var(--surface);color:var(--ink);padding:22px;width:min(440px,92vw)}
+dialog.pd::backdrop{background:rgba(10,14,20,.45)}
+dialog.pd h3{margin:0 0 4px;font-size:17px}
+dialog.pd p.hint{margin:0 0 16px;font-size:13px;color:var(--muted)}
+.field{margin-bottom:14px}
+.field > label,.field > span{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field select{width:100%;padding:9px 10px;border:1px solid var(--rule);border-radius:9px;background:var(--surface);color:var(--ink);font:14px var(--font)}
+.checks{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+.checks label{display:inline-flex;gap:6px;align-items:center}
+.checks input{width:16px;height:16px;accent-color:var(--ink)}
+.dlg-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+
+/* Print area (hidden on screen) */
+#printArea{display:none}
+
+@media (max-width:760px){
+  .wrap{padding:18px 14px 48px}
+  header.top{grid-template-columns:1fr;gap:14px}
+  .stats{text-align:left;gap:22px}
+  .board{display:none}
+  .mboard{display:block;margin-bottom:20px}
+  .mboard-head{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 10px}
+  .mboard-head h2{font-size:15px;margin:0}
+  .mboard-head button{border:0;background:none;color:var(--cardio);font:600 13px var(--font);cursor:pointer;padding:4px}
+  .lower{grid-template-columns:1fr}
+  .count{margin-left:0;width:100%}
+  .controls .seg{flex:1 1 auto}
+  .controls .seg button{flex:1}
+  .search{max-width:none}
+  .topbar{justify-content:space-between}
+  table.main{min-width:0}
+  table.main thead{display:none}
+  table.main tbody tr{display:block;padding:14px 16px;border-bottom:1px solid var(--rule)}
+  tr.monthsep{padding:0!important}
+  tr.monthsep td{display:block}
+  table.main tbody td{display:block;border:0;padding:4px 0;width:auto!important}
+  td.when{border-left:0!important;padding-left:10px!important;position:relative}
+  td.when::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:2px;background:var(--rule)}
+  tr.cardio td.when::before{background:var(--cardio)} tr.endo td.when::before{background:var(--endo)}
+  tr.neuro td.when::before{background:var(--neuro)} tr.renal td.when::before{background:var(--renal)}
+  tr.gi td.when::before{background:var(--gi)} tr.onc td.when::before{background:var(--onc)} tr.etc td.when::before{background:var(--etc)}
+  td[data-label]::before{content:attr(data-label);display:block;font-size:11.5px;color:var(--faint);margin-top:4px}
+  td.src a{display:inline-block;margin-right:12px}
+}
+@media (prefers-reduced-motion:reduce){table.main tbody tr,.mmonth summary .chev{transition:none}}
+
+/* ===== Print ===== */
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  :root,:root[data-theme="dark"]{
+    color-scheme:light;
+    --bg:#fff; --surface:#fff; --ink:#111; --muted:#555; --faint:#777; --rule:#bbb; --rule-soft:#ddd;
+    --cardio:#2754C5; --endo:#C2410C; --neuro:#AE2F6B; --renal:#4A7A0C; --gi:#0B7A6F; --onc:#6D3FC4; --etc:#5F6B78;
+    --cardio-bg:#E8EEFB; --endo-bg:#FDEADF; --neuro-bg:#FBE7F0; --renal-bg:#EBF4DC; --gi-bg:#E2F3F1; --onc-bg:#EFE9FB; --etc-bg:#ECEFF2;
+    --ent:#0A84AD; --peds:#9A6A00; --ortho:#7A4A22; --surg:#B5173F; --ent-bg:#E0F2F9; --peds-bg:#FBF1D6; --ortho-bg:#F3E9DE; --surg-bg:#FCE6EC;
+    --hema:#1E3A8A; --obgyn:#C2477F; --derm:#0E8F6A; --rheum:#B7791F; --hema-bg:#E3E9F8; --obgyn-bg:#FBE8F1; --derm-bg:#DFF5EC; --rheum-bg:#FBF0DC;
+    --intl:#0F5F8C; --today:#D7263D;
+  }
+  body{background:#fff;font-size:9pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap,dialog{display:none!important}
+  #printArea{display:block}
+  .pmonth{break-after:page;page-break-after:always}
+  .pmonth:last-child{break-after:auto;page-break-after:auto}
+  .phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #111;padding-bottom:4px;margin-bottom:6px}
+  .phead h2{margin:0;font-size:16pt}
+  .phead span{font-size:8.5pt;color:#555}
+  .pcal{width:100%;border-collapse:collapse;table-layout:fixed}
+  .pcal th{font-size:8.5pt;font-weight:700;padding:3px;border:1px solid #bbb;background:#f2f2f2}
+  .pcal th.sun,.pcal td.sun .pd-n{color:#C0392B} .pcal th.sat,.pcal td.sat .pd-n{color:#2754C5}
+  .pcal td{border:1px solid #bbb;vertical-align:top;height:24mm;padding:2px 3px;overflow:hidden}
+  .pcal td.out{background:#f7f7f7}
+  .pd-n{font-size:8.5pt;font-weight:700}
+  .pe{display:block;font-size:7pt;line-height:1.25;margin-top:1.5px;padding:0 3px;border-left:3px solid;border-radius:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pe.intl{font-style:italic}
+  .pe.cardio{border-color:var(--cardio);background:var(--cardio-bg)} .pe.endo{border-color:var(--endo);background:var(--endo-bg)}
+  .pe.neuro{border-color:var(--neuro);background:var(--neuro-bg)} .pe.renal{border-color:var(--renal);background:var(--renal-bg)}
+  .pe.gi{border-color:var(--gi);background:var(--gi-bg)} .pe.onc{border-color:var(--onc);background:var(--onc-bg)} .pe.etc{border-color:var(--etc);background:var(--etc-bg)}
+  .plist{width:100%;border-collapse:collapse;margin-top:6px;font-size:7.8pt}
+  .plist th,.plist td{border:1px solid #ccc;padding:2px 4px;text-align:left;vertical-align:top}
+  .plist th{background:#f2f2f2}
+  .plist tr{break-inside:avoid}
+  .plegend{font-size:7.5pt;color:#555;margin-top:4px}
+  .plegend i{display:inline-block;width:8px;height:8px;margin:0 3px 0 8px;vertical-align:-1px}
+  .pnone{font-size:9pt;color:#555;padding:8px 0}
+}
+
+/* 외과계·소아·이비인후 분과 색상 */
+.bar.ent{background:var(--ent)} .bar.peds{background:var(--peds)} .bar.ortho{background:var(--ortho)} .bar.surg{background:var(--surg)}
+.chip.ent,.cat.ent{--c:var(--ent);--cb:var(--ent-bg)} .chip.peds,.cat.peds{--c:var(--peds);--cb:var(--peds-bg)}
+.chip.ortho,.cat.ortho{--c:var(--ortho);--cb:var(--ortho-bg)} .chip.surg,.cat.surg{--c:var(--surg);--cb:var(--surg-bg)}
+tr.ent td.when{border-left-color:var(--ent)} tr.peds td.when{border-left-color:var(--peds)}
+tr.ortho td.when{border-left-color:var(--ortho)} tr.surg td.when{border-left-color:var(--surg)}
+@media (max-width:760px){
+  tr.ent td.when::before{background:var(--ent)} tr.peds td.when::before{background:var(--peds)}
+  tr.ortho td.when::before{background:var(--ortho)} tr.surg td.when::before{background:var(--surg)}
+}
+@media print{
+  .pe.ent{border-color:var(--ent);background:var(--ent-bg)} .pe.peds{border-color:var(--peds);background:var(--peds-bg)}
+  .pe.ortho{border-color:var(--ortho);background:var(--ortho-bg)} .pe.surg{border-color:var(--surg);background:var(--surg-bg)}
+}
+
+/* 혈액·산부인과·피부과·류마티스 분과 색상 */
+.bar.hema{background:var(--hema)} .bar.obgyn{background:var(--obgyn)} .bar.derm{background:var(--derm)} .bar.rheum{background:var(--rheum)}
+.chip.hema,.cat.hema{--c:var(--hema);--cb:var(--hema-bg)} .chip.obgyn,.cat.obgyn{--c:var(--obgyn);--cb:var(--obgyn-bg)} .chip.derm,.cat.derm{--c:var(--derm);--cb:var(--derm-bg)} .chip.rheum,.cat.rheum{--c:var(--rheum);--cb:var(--rheum-bg)}
+tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-color:var(--obgyn)} tr.derm td.when{border-left-color:var(--derm)} tr.rheum td.when{border-left-color:var(--rheum)}
+@media (max-width:760px){tr.hema td.when::before{background:var(--hema)} tr.obgyn td.when::before{background:var(--obgyn)} tr.derm td.when::before{background:var(--derm)} tr.rheum td.when::before{background:var(--rheum)}}
+@media print{.pe.hema{border-color:var(--hema);background:var(--hema-bg)} .pe.obgyn{border-color:var(--obgyn);background:var(--obgyn-bg)} .pe.derm{border-color:var(--derm);background:var(--derm-bg)} .pe.rheum{border-color:var(--rheum);background:var(--rheum-bg)}}
+.yh{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#0B6E4F;border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="topbar">
+  <div class="seg" id="themeSeg" role="group" aria-label="화면 테마">
+    <button type="button" data-v="light" aria-pressed="false">라이트</button>
+    <button type="button" data-v="dark" aria-pressed="false">다크</button>
+    <button type="button" data-v="system" aria-pressed="false">시스템</button>
+  </div>
+  <button type="button" class="btn primary" id="openPrint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>
+    월별 출력
+  </button>
+</div>
+
+<header class="top">
+  <div>
+    <h1>2026 국내·해외 주요 학술대회 연간 캘린더</h1>
+    <p class="lede">내과계(순환기·내분비·신경과·신장·소화기·간·항암·혈액·류마티스)와 이비인후과·소아청소년과·정형외과·외과·대장항문·산부인과·피부과의 국내 학회와 해외 주요 학회를 한 화면에 모았습니다. 유한양행 사옥에서 열리는 행사는 별도 표시했습니다. 연간 보드의 일정을 누르면 아래 표의 해당 행으로 이동합니다.</p>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="board" aria-labelledby="board-title">
+  <div class="board-head">
+    <h2 id="board-title">연간 일정 보드 · 국내 / 해외</h2>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="board-scroll"><div class="year" id="year"></div></div>
+</section>
+
+<section class="mboard" aria-labelledby="mboard-title">
+  <div class="mboard-head">
+    <h2 id="mboard-title">연간 일정 · 월별</h2>
+    <button type="button" id="mToggleAll">모두 펼치기</button>
+  </div>
+  <div id="mmonths"></div>
+</section>
+
+<div class="controls" role="group" aria-label="필터">
+  <div class="seg" id="regionSeg" aria-label="국내 해외 구분">
+    <button type="button" data-v="all" aria-pressed="true">국내+해외</button>
+    <button type="button" data-v="kr" aria-pressed="false">국내</button>
+    <button type="button" data-v="intl" aria-pressed="false">해외</button>
+  </div>
+  <div class="seg" id="statusSeg" aria-label="진행 상태">
+    <button type="button" data-v="all" aria-pressed="true">전체</button>
+    <button type="button" data-v="up" aria-pressed="false">예정</button>
+    <button type="button" data-v="done" aria-pressed="false">종료</button>
+  </div>
+  <div class="chips" id="catChips"></div>
+  <input class="search" id="q" type="search" placeholder="학회명, 도시, 장소 검색" aria-label="학회명, 도시, 장소 검색">
+  <span class="count" id="count"></span>
+</div>
+
+<div class="tablebox">
+  <table class="main">
+    <thead>
+      <tr><th>일정 · 상태</th><th>학회 · 행사명</th><th>장소</th><th>평점 · 등록</th><th>특이사항</th><th>검증</th><th>출처</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<div class="lower">
+  <section class="panel">
+    <h3>남은 일정에서 먼저 볼 것 (10월 이후)</h3>
+    <ul>
+      <li><b>10월 셋째 주가 가장 붐빕니다.</b> 국내 ICDM·KSC(10/15–17) 직후 해외 UEG Week(10/17–20), ASN Kidney Week·국내 WSC(10/21–25), ESMO(10/23–27)가 이어집니다. 해외 출장 KOL이 많아 국내 행사 참석률이 떨어질 수 있습니다.</li>
+      <li><b>11월 초 순환기·간:</b> 국내 Hypertension Seoul(11/5–7)이 해외 AHA(11/6–9), AASLD(11/5–9)와 겹칩니다.</li>
+      <li><b>외과계·소아·이비인후 일정:</b> 해외 AAP(10/2–6) 직후 대한정형외과학회 국제학술대회(10/8–10, 코엑스마곡)가 열리고, 이비인후과 종합학술대회와 ASPR 2026(소아)은 10/21–23로 같은 주에 겹칩니다. 대한외과학회 ACKSS(11/5–7)는 Hypertension Seoul과 일정이 같습니다.</li>
+      <li><b>유한양행 사옥 개최:</b> 간학회 알코올연구회(10/17, 윌로우하우스), 항문질환연구회 집담회(10/18·12/6, 본사 4층 강당)가 남아 있습니다. 검색창에 "유한양행"을 입력하면 모아 볼 수 있습니다.</li>
+      <li><b>마감 임박:</b> Hypertension Seoul 사전등록 10/9, AACR-KCA 사전접수 10/16, KDDW 사전등록 10/23.</li>
+      <li><b>해외 학회 후속 활동:</b> ESMO·AHA·AASLD 핵심 결과를 D+7 내 요약해 KDDW·ICKNA 등 국내 행사 디테일링에 활용하세요.</li>
+    </ul>
+  </section>
+  <section class="panel">
+    <h3>검증 표시 기준</h3>
+    <ul>
+      <li><b>공식 확인:</b> 학회 공식 사이트·공지 또는 대한의학회·대한신경과학회 일정표에서 날짜와 장소를 확인한 행사입니다.</li>
+      <li><b>일부 확인:</b> 날짜나 장소 중 하나가 2차 출처에만 있는 행사입니다. 출장·후원 확정 전 사무국 확인이 필요합니다.</li>
+      <li><b>시간·세부 홀:</b> 공식 프로그램에서 확인되지 않은 경우 "프로그램 확인"으로 표시했습니다.</li>
+      <li><b>오늘 표시선:</b> 빨간 선과 D-day는 보는 날짜 기준으로 계산되며, 페이지를 열어둔 채 날짜가 바뀌면 자동으로 갱신됩니다.</li>
+    </ul>
+  </section>
+</div>
+
+<p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 2026년 10월 1일 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
+</div>
+
+<dialog class="pd" id="printDlg" aria-labelledby="pd-title">
+  <form method="dialog" id="printForm">
+    <h3 id="pd-title">월별 일정 출력</h3>
+    <p class="hint">A4 가로 한 장에 달력과 행사 목록이 함께 나옵니다. 인쇄 창에서 "PDF로 저장"을 고르면 파일로 받을 수 있습니다.</p>
+    <div class="field">
+      <label for="pMonth">출력할 달</label>
+      <select id="pMonth"></select>
+    </div>
+    <div class="field">
+      <span>포함할 행사</span>
+      <div class="checks">
+        <label><input type="checkbox" id="pKr" checked> 국내</label>
+        <label><input type="checkbox" id="pIntl" checked> 해외</label>
+        <label><input type="checkbox" id="pFilter"> 현재 분과 필터 적용</label>
+      </div>
+    </div>
+    <div class="dlg-actions">
+      <button type="button" class="btn" id="pCancel">취소</button>
+      <button type="button" class="btn primary" id="pGo">출력하기</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="printArea" aria-hidden="true"></div>
+
+<script>
+const CAT = {
+  cardio:"순환기·지질·고혈압", endo:"내분비·당뇨·비만", neuro:"신경과", renal:"신장",
+  gi:"소화기·간", onc:"항암·종양", etc:"기타 내과계",
+  ent:"이비인후과", peds:"소아청소년과", ortho:"정형외과", surg:"외과·대장항문",
+  hema:"혈액·소아혈액종양", obgyn:"산부인과", derm:"피부과", rheum:"류마티스"
+};
+const REG = {kr:"국내", intl:"해외", krintl:"해외 학회 · 국내 개최"};
+const VTXT = {ok:"공식 확인",partial:"일부 확인",none:"미확인"};
+const KAMS = n=>`https://www.kams.or.kr/bbs/index.php?code=ws&page=2&number=${n}&mode=view`;
+const KNA = n=>`https://renew.neuro.or.kr/kr/do-schedule/view/${n}`;
+
+const EVENTS = [
+  /* ===== 국내: 순환기 ===== */
+  {id:1,r:"kr",cat:"cardio",soc:"대한심뇌혈관질환예방학회",ev:"2026 춘계학술대회",short:"심뇌혈관예방 춘계",s:"2026-03-28",e:"2026-03-28",time:"09:00–17:00",venue:"SKY31 컨벤션",vd:"서울 송파구",credit:"공식 공지 확인 필요",notes:["대한고혈압학회 공지로 일정·시간 확인"],v:"ok",links:[["학술대회 홈페이지","http://www.mycme.kr/kscp2026/common_files/default.asp"],["고혈압학회 공지","https://www.koreanhypertension.org/news/notice?mode=read&idno=10420"]]},
+  {id:2,r:"kr",cat:"cardio",soc:"한국지질·동맥경화학회",ev:"SoLA 2026 (춘계학술대회)",short:"SoLA 2026",s:"2026-04-04",e:"2026-04-04",time:"프로그램 확인",venue:"시그니엘 부산",vd:"부산 해운대구",credit:"공식 공지 확인 필요",notes:["가을 ICoLA의 전초전. 이상지질혈증 복합제 디테일링 시작점"],v:"ok",links:[["학회 대회 이력","https://lipid.or.kr/conferences_journals/competition_history.php"],["4월 학술일정 기사","http://www.healthmedia.co.kr/news/articleView.html?idxno=104995"]]},
+  {id:4,r:"kr",cat:"cardio",soc:"대한심장학회",ev:"2026 춘계심혈관통합학술대회 & ACC Asia 2026",short:"춘계심혈관통합",s:"2026-04-17",e:"2026-04-18",time:"프로그램 확인",venue:"경주화백컨벤션센터 (HICO)",vd:"경북 경주시 보문로 507",credit:"공식 공지 확인 필요",notes:["20개국 2,400여 명 참가","유관학회 공동 세션. 고혈압+이상지질혈증 복합 부스 적합","세부 홀·시간은 공식 프로그램 확인 필요"],v:"ok",links:[["심장학회 춘계 안내","https://m.circulation.or.kr/workshop/sub1.php"],["HICO 성료 기사","https://www.newstown.co.kr/news/articleView.html?idxno=701559"]]},
+  {id:8,r:"kr",cat:"cardio",soc:"대한고혈압학회",ev:"제64회 춘계학술대회",short:"고혈압학회 춘계",s:"2026-05-22",e:"2026-05-23",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"",credit:"내과 전공의 외부학술 일 2점",notes:["'2026 고혈압 진료지침(제6판)' 발표, 반지형 커프리스 혈압계 권고 포함"],v:"partial",links:[["내과학회 평점 목록","https://www.kaim.or.kr/mobile/schedule/edu_list.php?gubun=3"],["진료지침 기사","https://www.rapportian.com/news/articleView.html?idxno=240174"]]},
+  {id:16,r:"kr",cat:"cardio",soc:"한국지질·동맥경화학회",ev:"ICoLA 2026 (제15회 국제학술대회)",short:"ICoLA 2026",s:"2026-09-10",e:"2026-09-12",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"서울 영등포구 국제금융로 10",credit:"공식 공지 확인 필요",notes:["Lp(a)·인클리시란·잔여 심혈관 위험 집중","유한양행 등 국내사 다수 참여"],v:"ok",links:[["지질동맥경화학회","https://www.lipid.or.kr/index_kor.php"],["현장 기사","https://www.medipharmhealth.co.kr/news/article.html?no=119583"]]},
+  {id:21,r:"kr",cat:"cardio",soc:"대한심장학회",ev:"KSC 2026 (제70차 추계학술대회)",short:"KSC 2026",s:"2026-10-15",e:"2026-10-17",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구 워커힐로 177",credit:"공식 공지 확인 필요",notes:["ACC·JCS·APSC 등 해외학회 공동 세션, 심혈관대사 세션 포함"],v:"ok",links:[["KSC 2026 프로그램","https://ksc2026.or.kr/program/at/"],["심장학회 일정","https://www.circulation.or.kr/eng/"]]},
+  {id:24,r:"kr",cat:"cardio",soc:"대한부정맥학회",ev:"KHRS 2026 & APHRS 2026",short:"KHRS·APHRS",s:"2026-10-21",e:"2026-10-24",time:"프로그램 확인",venue:"부산 벡스코",vd:"부산 해운대구",credit:"공식 공지 확인 필요",notes:["아시아태평양 부정맥 국제학술대회 동시 개최","항응고제·심방세동 관련"],v:"ok",links:[["대한의학회 일정",KAMS(7968)],["심장학회 10월 캘린더","https://circulation.or.kr/main_cal.php?category=&code=&month=10&page_type=&type=&year=2026"]]},
+  {id:31,r:"kr",cat:"cardio",soc:"대한고혈압학회",ev:"Hypertension Seoul 2026 (제65회 추계국제학술대회)",short:"Hypertension Seoul",s:"2026-11-05",e:"2026-11-07",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"서울 영등포구 국제금융로 10",credit:"온라인 사전등록 10/9 마감",notes:["주제: 2026 고혈압 진료지침의 현실 진료 적용","고령·고위험군 목표혈압, AI·원격 모니터링 세션"],v:"ok",links:[["개최 기사(간호사신문)","https://www.nursenews.co.kr/news/articleView.html?idxno=44050"],["개최 기사(라포르시안)","https://www.rapportian.com/news/articleView.html?idxno=240174"]]},
+
+  /* ===== 국내: 내분비 ===== */
+  {id:3,r:"kr",cat:"endo",soc:"대한내분비학회",ev:"SICEM 2026 (제14회 서울국제내분비학술대회)",short:"SICEM 2026",s:"2026-04-09",e:"2026-04-11",time:"개막 4/9 14:00 · 폐막 4/11 16:20",venue:"그랜드 하얏트 인천",vd:"메인 Room 1 (Hyatt Regency B1)",credit:"공식 공지 확인 필요",notes:["33개국 참여, 초록 925편 역대 최다"],v:"ok",links:[["내분비학회 학술대회","https://www.endocrinology.or.kr/conference/"],["성료 기사","https://www.monews.co.kr/news/articleView.html?idxno=410649"]]},
+  {id:6,r:"kr",cat:"endo",soc:"대한당뇨병학회",ev:"제39차 대한당뇨병학회 춘계학술대회",short:"당뇨병학회 춘계",s:"2026-04-30",e:"2026-05-02",time:"4/30 14:00 ~ 5/2 15:00",venue:"광주 김대중컨벤션센터",vd:"포스터 1층 다목적홀2",credit:"공식 공지 확인 필요",notes:["63개 세션, 강의 짧게·토론 길게 방식","SGLT-2i·DPP-4i 복합제 디테일링 적기"],v:"ok",links:[["당뇨병학회 일정","https://www.diabetes.or.kr/bbs/index.php?code=schedule&gubun=SC"],["포스터·장소 안내","https://diabetes.or.kr/pro/event/202601/abstract/poster.php"]]},
+  {id:14,r:"kr",cat:"endo",soc:"대한비만학회",ev:"ICOMES 2026",short:"ICOMES 2026",s:"2026-09-03",e:"2026-09-05",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"일부 기사에는 페어몬트 앰배서더 서울 세션도 표기",credit:"공식 공지 확인 필요",notes:["국가 비만관리 정책토론회, 학회 첫 환자 세션"],v:"ok",links:[["ICOMES 공식","https://icomes.or.kr/"],["정책토론회 기사","https://www.keydr.kr/news/article.html?no=6007"]]},
+  {id:20,r:"kr",cat:"endo",soc:"대한당뇨병학회",ev:"2026 KDA Scientific Meeting: 16th ICDM",short:"ICDM 2026",s:"2026-10-15",e:"2026-10-17",time:"10/15 14:00 ~ 10/17 15:00",venue:"코엑스마곡",vd:"서울 강서구",credit:"내과 분과 일 최대 2점 · 당뇨병교육자 10점 · 현장등록 전문의(회원) 37만원",notes:["KSC 2026과 완전히 겹침 → 순환기·대사 인력 분산 필요"],v:"ok",links:[["ICDM 2026 공식","https://icdm.or.kr/2026/"],["당뇨병학회 일정","https://www.diabetes.or.kr/bbs/?code=schedule"]]},
+  {id:29,r:"kr",cat:"endo",soc:"대한내분비학회",ev:"2026 추계학술대회 및 학연산 심포지엄",short:"내분비 추계",s:"2026-10-29",e:"2026-10-31",time:"프로그램 확인",venue:"창원컨벤션센터",vd:"경남 창원시",credit:"공식 공지 확인 필요",notes:["학계·연구·산업 공동 심포지엄. 제약사 참여 여지 큼"],v:"ok",links:[["내분비학회","https://www.endocrinology.or.kr/english/"],["대한의학회 일정",KAMS(7926)]]},
+
+  /* ===== 국내: 신경과 ===== */
+  {id:36,r:"kr",cat:"neuro",soc:"대한신경과학회",ev:"2026 제45차 춘계학술대회",short:"신경과학회 춘계",s:"2026-04-04",e:"2026-04-04",time:"프로그램 확인",venue:"광주 김대중컨벤션센터",vd:"광주 서구",credit:"공식 공지 확인 필요",notes:["신경과 전 분야 정기 학술대회"],v:"ok",links:[["신경과학회 행사 상세",KNA(24259)]]},
+  {id:37,r:"kr",cat:"neuro",soc:"대한치매학회",ev:"2026 춘계학술대회",short:"치매학회 춘계",s:"2026-04-11",e:"2026-04-11",time:"프로그램 확인",venue:"스위스그랜드호텔 컨벤션홀",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["치매 치료제·인지중재 관련"],v:"ok",links:[["신경과학회 행사 상세",KNA(24415)]]},
+  {id:38,r:"kr",cat:"neuro",soc:"대한파킨슨병및이상운동질환학회",ev:"2026 춘계학술대회",short:"KMDS 춘계",s:"2026-04-24",e:"2026-04-25",time:"프로그램 확인",venue:"스위스그랜드호텔",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["4/26 삼정호텔 춘계보수교육 연계"],v:"ok",links:[["신경과학회 행사 상세",KNA(24418)]]},
+  {id:40,r:"kr",cat:"neuro",soc:"대한신경과의사회",ev:"제45회 추계학술대회",short:"신경과의사회 추계",s:"2026-10-18",e:"2026-10-18",time:"프로그램 확인",venue:"서울 드래곤시티호텔",vd:"서울 용산구",credit:"공식 공지 확인 필요",notes:["개원 신경과 원장 대상. 로컬 처방 접점"],v:"ok",links:[["신경과학회 행사 상세",KNA(24397)]]},
+  {id:39,r:"krintl",cat:"neuro",soc:"대한뇌졸중학회 · 세계뇌졸중기구",ev:"WSC 2026 & ICSU 2026 (세계뇌졸중학회)",short:"WSC 2026",s:"2026-10-21",e:"2026-10-23",time:"프로그램 확인",venue:"서울 코엑스",vd:"서울 강남구 삼성동",credit:"공식 공지 확인 필요",notes:["대한뇌졸중학회 국제학술대회(ICSU 2026) 통합 개최","세계뇌졸중학회의 서울 개최. 항혈전제·스타틴 등 2차 예방 접점","ASN Kidney Week·ESMO와 같은 주"],v:"ok",links:[["신경과학회 행사 상세",KNA(24405)],["대한의학회 일정","https://www.kams.or.kr/bbs/?code=ws"]]},
+  {id:41,r:"kr",cat:"neuro",soc:"대한파킨슨병및이상운동질환학회",ev:"2026 추계학술대회",short:"KMDS 추계",s:"2026-10-24",e:"2026-10-24",time:"프로그램 확인",venue:"대구 인터불고호텔",vd:"대구",credit:"공식 공지 확인 필요",notes:["12/12 추계보수교육(삼성서울병원) 별도"],v:"ok",links:[["신경과학회 행사 상세",KNA(24420)]]},
+  {id:42,r:"kr",cat:"neuro",soc:"대한두통학회",ev:"2026 추계학술대회",short:"두통학회 추계",s:"2026-11-15",e:"2026-11-15",time:"프로그램 확인",venue:"서울 삼정호텔",vd:"서울 강남구",credit:"공식 공지 확인 필요",notes:["편두통 예방 치료제 관련"],v:"ok",links:[["신경과학회 행사 상세",KNA(24407)]]},
+  {id:43,r:"kr",cat:"neuro",soc:"대한치매학회",ev:"2026 추계학술대회",short:"치매학회 추계",s:"2026-11-21",e:"2026-11-21",time:"프로그램 확인",venue:"스위스그랜드호텔 컨벤션홀",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["KDDW 마지막 날과 겹침"],v:"ok",links:[["신경과학회 행사 상세",KNA(24416)]]},
+  {id:44,r:"kr",cat:"neuro",soc:"대한신경과학회",ev:"ICKNA 2026 (국제학술대회)",short:"ICKNA 2026",s:"2026-11-26",e:"2026-11-27",time:"프로그램 확인",venue:"롯데호텔 서울 (소공동)",vd:"서울 중구",credit:"공식 공지 확인 필요",notes:["신경과학회 연중 최대 국제행사"],v:"ok",links:[["신경과학회 행사 상세",KNA(24260)]]},
+
+  /* ===== 국내: 신장 ===== */
+  {id:10,r:"kr",cat:"renal",soc:"대한신장학회",ev:"KSN 2026 (제46차 국제학술대회)",short:"KSN 2026",s:"2026-06-11",e:"2026-06-14",time:"프로그램 확인",venue:"서울 코엑스",vd:"서울 강남구 삼성동",credit:"국내개최 국제학술대회 인정",notes:["2,317명 등록, 초록 1,023편","CKD 동반 당뇨·고혈압 연계 디테일링"],v:"ok",links:[["신장학회 전시 안내","https://www.ksn.or.kr/sponsor/apply/view.php?number=155"],["성료 기사","https://www.khanews.com/news/articleView.html?idxno=246603"]]},
+  {id:18,r:"kr",cat:"renal",soc:"대한신장학회",ev:"2026년 통합학술대회 (KSN-IAC 2026)",short:"KSN-IAC",s:"2026-09-12",e:"2026-09-13",time:"프로그램 확인",venue:"광주 김대중컨벤션센터",vd:"4개 강의실, 24개 세션",credit:"공식 공지 확인 필요",notes:["17개 연구회·2개 지회 참여"],v:"ok",links:[["개최 기사","https://www.medifonews.com/news/article.html?no=216053"]]},
+
+  /* ===== 국내: 소화기 ===== */
+  {id:9,r:"kr",cat:"gi",soc:"대한간학회 (4개 학회 공동)",ev:"The Liver Week 2026",short:"Liver Week",s:"2026-06-11",e:"2026-06-13",time:"프로그램 확인",venue:"콘래드 서울",vd:"3·5·6층 사용, 등록대 3층",credit:"공식 공지 확인 필요",notes:["EALA 2026 6/13–14 연계 개최"],v:"ok",links:[["공식 행사 정보","https://www.theliverweek.org/2026/introduction/information.php"],["공식 장소 안내","https://theliverweek.org/2026/venue/venue.php"]]},
+  {id:23,r:"kr",cat:"gi",soc:"대한상부위장관·헬리코박터학회",ev:"2026 추계학술대회",short:"헬리코박터 추계",s:"2026-10-17",e:"2026-10-17",time:"프로그램 확인",venue:"스위스그랜드호텔",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["P-CAB·PPI·제균요법 관련 핵심 학회"],v:"ok",links:[["대한의학회 일정","https://www.kams.or.kr/bbs/index.php?code=ws&number=7981&mode=view"]]},
+  {id:34,r:"kr",cat:"gi",soc:"KDDW 조직위 (소화기 8개 학회)",ev:"The 10th KDDW 2026",short:"KDDW 2026",s:"2026-11-19",e:"2026-11-21",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구 워커힐로 177",credit:"사전등록 10/23 마감",notes:["올해 주관 대한소화기내시경학회, 10주년","8개 회원학회 + 1개 연관학회 공동","대한간학회 제32차 추계학술대회 겸","P-CAB/PPI·IBD·간질환 치료제 연중 최대 행사"],v:"ok",links:[["KDDW 2026 공식","https://www.kddw.org/"],["행사 개요","https://kddw.org/about/conference_information.php"]]},
+
+  /* ===== 국내: 항암 ===== */
+  {id:7,r:"kr",cat:"onc",soc:"대한종양내과학회",ev:"2026 춘계 정기심포지엄 및 정기총회",short:"KSMO 춘계",s:"2026-05-15",e:"2026-05-15",time:"프로그램 확인",venue:"그랜드 인터컨티넨탈 서울 파르나스",vd:"서울 강남구",credit:"공식 공지 확인 필요",notes:["ctDNA·AI 정밀의료, 고가 항암제 급여 정책 논의"],v:"ok",links:[["KSMO 교육·행사 일정","https://www.ksmo.or.kr/Pages/Conference/conference01.aspx"],["개최 기사","https://www.medifonews.com/news/article.html?no=213612"]]},
+  {id:11,r:"kr",cat:"onc",soc:"대한폐암학회",ev:"2026년 춘계학술대회",short:"폐암학회 춘계",s:"2026-06-12",e:"2026-06-12",time:"프로그램 확인",venue:"강릉 세인트존스호텔",vd:"오션타워 4층 그랜드볼룸 안티구아",credit:"의협 4점 · 내과 4점 · 사전등록 회원 2만원",notes:["EGFR 변이 NSCLC·다학제 접점"],v:"ok",links:[["폐암학회 학술행사","https://www.lungca.or.kr/bbs/?code=schedule"],["대전협 안내","http://youngmd.org/189/?bmode=view&idx=170546402"]]},
+  {id:12,r:"kr",cat:"onc",soc:"대한암학회",ev:"제52차 대한암학회 학술대회",short:"대한암학회",s:"2026-06-25",e:"2026-06-26",time:"프로그램 확인",venue:"그랜드 인터컨티넨탈 서울 파르나스",vd:"서울 강남구",credit:"내과 전공의 외부학술 2점(국제)",notes:["국제학술대회. 런천심포지엄·전시 운영"],v:"ok",links:[["암학회 2026 행사일정","https://www.cancer.or.kr/rang_board/list.html?code=notice&num=4950"]]},
+  {id:13,r:"kr",cat:"onc",soc:"대한종양내과학회 (KSMO)",ev:"KSMO 2026 (제19차 학술대회 & 제14차 FACO)",short:"KSMO 2026",s:"2026-09-02",e:"2026-09-04",time:"프로그램 확인",venue:"그랜드 인터컨티넨탈 서울 파르나스",vd:"서울 강남구",credit:"내과 전공의 외부학술 2점(국제)",notes:["51개국 2,300여 명 사전등록","ASCO·ESMO 회장단 참석"],v:"ok",links:[["KSMO 2026 공식","https://www.ksmoconference.org/"],["개최 기사","http://www.khanews.com/news/articleView.html?idxno=249592"]]},
+  {id:15,r:"kr",cat:"onc",soc:"대한폐암학회",ev:"KALC International Conference 2026",short:"KALC IC 2026",s:"2026-09-10",e:"2026-09-11",time:"프로그램 확인",venue:"롯데호텔월드 (잠실)",vd:"3층 크리스탈볼룸",credit:"공식 공지 확인 필요",notes:["대면 참석만 가능","유한양행 렉라자 등 주요 제약사 부스 운영"],v:"ok",links:[["KALC IC 등록 안내","https://www.kalcic.or.kr/registration/"],["현장 기사","https://www.medipana.com/news/articleView.html?idxno=417398"]]},
+  {id:17,r:"krintl",cat:"onc",soc:"IASLC (세계폐암학회)",ev:"WCLC 2026",short:"WCLC 2026",s:"2026-09-12",e:"2026-09-15",time:"프로그램 확인",venue:"서울 코엑스",vd:"COEX Convention & Exhibition Center",credit:"해외 학회 국내 개최",notes:["7,000명 이상, 130개 이상 세션","렉라자 글로벌 노출 기회"],v:"ok",links:[["WCLC 2026 공식","https://wclc.iaslc.org/"],["장소 안내","https://wclc.iaslc.org/venue-city-information/"]]},
+  {id:19,r:"kr",cat:"onc",soc:"대한위암학회",ev:"KINGCA WEEK 2026",short:"KINGCA WEEK",s:"2026-09-17",e:"2026-09-19",time:"프로그램 확인",venue:"롯데호텔 서울",vd:"서울 중구",credit:"공식 공지 확인 필요",notes:["위암 국제학술대회"],v:"ok",links:[["위암학회 학술행사","https://www.kgca-i.or.kr/html/?pmode=event&smode=lists&year=2685&month=all"]]},
+  {id:22,r:"kr",cat:"onc",soc:"폐암학회 종양면역다학제연구회",ev:"2026 추계심포지엄",short:"종양면역 추계",s:"2026-10-16",e:"2026-10-16",time:"프로그램 확인",venue:"호텔나루 엠갤러리",vd:"서울 마포구",credit:"공식 공지 확인 필요",notes:["면역항암·다학제 소규모 심포지엄"],v:"ok",links:[["폐암학회 학술행사","https://www.lungca.or.kr/bbs/?code=schedule"]]},
+  {id:30,r:"kr",cat:"hema",soc:"대한혈액학회",ev:"Eastern Breeze Symposium on Malignant Lymphoma",short:"림프종 심포지엄",s:"2026-10-30",e:"2026-10-31",time:"프로그램 확인",venue:"콘래드 서울",vd:"서울 영등포구",credit:"공식 공지 확인 필요",notes:["림프종 국제 심포지엄"],v:"ok",links:[["대한의학회 일정",KAMS(8186)]]},
+  {id:32,r:"kr",cat:"onc",soc:"대한암학회 · AACR",ev:"2026 AACR-KCA Joint Conference on Precision Medicine",short:"AACR-KCA",s:"2026-11-12",e:"2026-11-13",time:"프로그램 확인",venue:"경주화백컨벤션센터 (HICO)",vd:"경북 경주시",credit:"사전접수 10/16 마감",notes:["미국암학회 공동 정밀의료 국제학술대회"],v:"ok",links:[["암학회 2026 행사일정","https://www.cancer.or.kr/rang_board/list.html?code=notice&num=4950"]]},
+  {id:33,r:"kr",cat:"onc",soc:"폐암학회 표적치료연구회",ev:"2026년 추계학술대회",short:"표적치료 추계",s:"2026-11-14",e:"2026-11-14",time:"프로그램 확인",venue:"코엑스마곡",vd:"서울 강서구",credit:"공식 공지 확인 필요",notes:["EGFR 표적치료 전문가 모임. 렉라자 핵심 타깃"],v:"ok",links:[["폐암학회 학술행사","https://www.lungca.or.kr/bbs/?code=schedule"]]},
+
+  /* ===== 국내: 기타 내과계 ===== */
+  {id:5,r:"kr",cat:"etc",soc:"대한내과학회",ev:"2026 춘계학술대회",short:"내과학회 춘계",s:"2026-04-24",e:"2026-04-25",time:"프로그램 확인",venue:"광주 김대중컨벤션센터",vd:"광주 서구",credit:"내과 연수평점 (확인 필요)",notes:["내과 전 분과. 로컬 내과 개원의 접점"],fix:"장소는 내과학회 공식, 날짜는 2차 출처",v:"partial",links:[["내과학회 학술대회","https://www.kaim.or.kr/mobile/schedule/work_schedule.php"],["2차 출처 일정","https://mediking.net/service/conference/16/"]]},
+  {id:25,r:"kr",cat:"etc",soc:"대한내과학회",ev:"제77차 추계학술대회",short:"내과학회 추계",s:"2026-10-23",e:"2026-10-24",time:"프로그램 확인",venue:"서울 스위스그랜드호텔",vd:"서울 서대문구",credit:"내과 연수평점 (확인 필요)",notes:["종합병원·개원 내과 동시 접점"],v:"ok",links:[["대한의학회 일정",KAMS(7924)]]},
+  {id:26,r:"kr",cat:"etc",soc:"대한가정의학회",ev:"2026년 추계학술대회",short:"가정의학회 추계",s:"2026-10-23",e:"2026-10-25",time:"프로그램 확인",venue:"여수엑스포컨벤션센터",vd:"전남 여수시",credit:"공식 공지 확인 필요",notes:["1차 의료 만성질환 처방 핵심 접점"],v:"ok",links:[["대한의학회 일정",KAMS(7904)]]},
+  {id:27,r:"kr",cat:"etc",soc:"대한결핵및호흡기학회",ev:"KATRD International Conference 2026",short:"KATRD 2026",s:"2026-10-28",e:"2026-10-30",time:"프로그램 확인",venue:"롯데호텔월드",vd:"서울 송파구",credit:"공식 공지 확인 필요",notes:["호흡기내과 최대 행사, 폐암 진단 KOL 접점"],v:"ok",links:[["대한의학회 일정",KAMS(7910)]]},
+  {id:28,r:"krintl",cat:"rheum",soc:"대한류마티스학회",ev:"APLAR 2026 (제28차 아시아태평양류마티스학회)",short:"APLAR 2026",s:"2026-10-28",e:"2026-11-01",time:"프로그램 확인",venue:"코엑스 서울",vd:"서울 강남구",credit:"공식 공지 확인 필요",notes:["아시아태평양 류마티스 국제학회 국내 개최"],v:"ok",links:[["대한의학회 일정",KAMS(7949)]]},
+
+  /* ===== 해외 ===== */
+  {id:101,r:"intl",cat:"cardio",soc:"미국심장학회 (ACC)",ev:"ACC.26 (제75차 Annual Scientific Session & Expo)",short:"ACC.26",s:"2026-03-28",e:"2026-03-30",time:"현지 기준",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["대형 임상 late-breaking 발표, ACC/AHA 가이드라인 업데이트","국내 4월 춘계심혈관통합(ACC Asia)으로 연결"],v:"ok",links:[["ACC.26 학회 커버리지","https://www.acc.org/Latest-in-Cardiology/Features/Meeting-Coverage/2026/ACC-2026-Meeting-Coverage"],["학회 미디어 안내","https://www.acc.org/Footer-Pages/Media-Center/Annual-Scientific-Session"]]},
+  {id:102,r:"intl",cat:"neuro",soc:"미국신경과학회 (AAN)",ev:"2026 AAN Annual Meeting",short:"AAN 2026",s:"2026-04-18",e:"2026-04-22",time:"현지 기준 · 온라인 병행",venue:"미국 시카고",vd:"McCormick Place West Building",credit:"해외 학회",notes:["신경과 최대 학회. 다발성경화증·중증근무력증·AI 세션"],v:"ok",links:[["AAN 공식 FAQ","https://www.aan.com/events/annual-meeting/frequently-asked-questions"],["AAN 미리보기","https://www.aan.com/news/what-to-expect-2026-aan-annual-meeting"]]},
+  {id:103,r:"intl",cat:"gi",soc:"AGA·AASLD·ASGE·SSAT",ev:"DDW 2026 (Digestive Disease Week)",short:"DDW 2026",s:"2026-05-02",e:"2026-05-05",time:"현지 기준 · 온라인 병행",venue:"미국 시카고",vd:"McCormick Place",credit:"해외 학회",notes:["13,000명 이상 참가 예상, 소화기·간·내시경 통합"],v:"ok",links:[["캐나다소화기학회 일정","https://www.cag-acg.org/cgi/page.cgi/_evtcal.html?evt=188"],["Medscape 학회 페이지","https://www.medscape.com/c25/p14/digestive-disease-week-ddw-2026-2026a1000c5k"]]},
+  {id:104,r:"intl",cat:"gi",soc:"유럽간학회 (EASL)",ev:"EASL Congress 2026",short:"EASL 2026",s:"2026-05-27",e:"2026-05-30",time:"현지 기준 · 하이브리드",venue:"스페인 바르셀로나",vd:"Fira Barcelona Gran Via",credit:"해외 학회",notes:["유럽 최대 간 학회. MASH·간암 데이터 발표","국내 Liver Week(6/11) 2주 전"],v:"ok",links:[["EASL 공식(산업 안내)","https://industry.easl.eu/easlcongress2026"]]},
+  {id:105,r:"intl",cat:"onc",soc:"미국임상종양학회 (ASCO)",ev:"2026 ASCO Annual Meeting",short:"ASCO 2026",s:"2026-05-29",e:"2026-06-02",time:"현지 기준 · 온라인 병행",venue:"미국 시카고",vd:"McCormick Place",credit:"해외 학회",notes:["세계 최대 항암 학회. 폐암 표적치료 핵심 데이터 발표 시점"],v:"ok",links:[["ASCO 프로그램 안내","https://www.asco.org/am-program"]]},
+  {id:106,r:"intl",cat:"renal",soc:"유럽신장학회 (ERA)",ev:"63rd ERA Congress 2026",short:"ERA 2026",s:"2026-06-03",e:"2026-06-06",time:"현지 기준 · 하이브리드",venue:"영국 글래스고",vd:"Scottish Event Campus (SEC)",credit:"해외 학회",notes:["유럽 최대 신장 학회. 국내 KSN 2026(6/11) 직전"],fix:"2차 출처(학회 목록 기사) 기준. 공식 사이트 확인 권장",v:"partial",links:[["2026 신장 학회 목록","https://textexpander.com/blog/nephrology-conferences"]]},
+  {id:107,r:"intl",cat:"endo",soc:"미국당뇨병학회 (ADA)",ev:"ADA 86th Scientific Sessions",short:"ADA 2026",s:"2026-06-05",e:"2026-06-08",time:"현지 기준",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["당뇨·비만 최대 학회. Standards of Care 업데이트, 차세대 비만 치료제 결과"],v:"ok",links:[["IDF 일정 안내","https://idf.org/congress-and-events/upcoming-diabetes-events/ada-scientific-sessions-2026/"],["학회 개요","https://mdnewsline.com/ada-2026-scientific-sessions-dates-location-program-overview/"]]},
+  {id:108,r:"intl",cat:"endo",soc:"미국내분비학회 (Endocrine Society)",ev:"ENDO 2026 (제108차 연례학술대회)",short:"ENDO 2026",s:"2026-06-13",e:"2026-06-16",time:"현지 기준",venue:"미국 시카고",vd:"McCormick Place West",credit:"해외 학회",notes:["7,200명 이상, 초록 약 2,500편. 비만·당뇨·갑상선·골"],v:"ok",links:[["Endocrine Society 보도자료","https://www.endocrine.org/news-and-advocacy/news-room/2026/endo-2026-opens-media-registration"]]},
+  {id:109,r:"intl",cat:"neuro",soc:"유럽신경과학회 (EAN)",ev:"12th EAN Congress 2026",short:"EAN 2026",s:"2026-06-27",e:"2026-06-30",time:"현지 기준",venue:"스위스 제네바",vd:"",credit:"해외 학회",notes:["주제 'Brains, Bytes & Beyond: Tech in Neurology'"],v:"ok",links:[["EAN 2026 일정","https://ebrains.eu/news-and-events/events/2026/ean-congress-2026"]]},
+  {id:110,r:"intl",cat:"cardio",soc:"유럽심장학회 (ESC)",ev:"ESC Congress 2026",short:"ESC 2026",s:"2026-08-28",e:"2026-08-31",time:"현지 기준 · 온라인 병행",venue:"독일 뮌헨",vd:"Messe München",credit:"해외 학회",notes:["약 3만 명 규모 세계 최대 심장 학회. ESC 가이드라인 발표","9월 국내 ICoLA·KSC 디테일링 소재"],v:"ok",links:[["ESC 공식","https://www.escardio.org/events/congresses/esc-congress/"],["뮌헨 관광청 안내","https://www.munich.travel/en/topics/convention-bureau/news-highlights-2024/esc-congress-2026"]]},
+  {id:111,r:"intl",cat:"endo",soc:"유럽당뇨병학회 (EASD)",ev:"62nd EASD Annual Meeting",short:"EASD 2026",s:"2026-09-28",e:"2026-10-02",time:"현지 기준 · 하이브리드 (9/27 사전 등록 오픈)",venue:"이탈리아 밀라노",vd:"Allianz MiCo",credit:"해외 학회",notes:["ICDM(10/15) 2주 전. EASD 발표 데이터 ICDM 활용 가능"],fix:"IDF 사이트는 9/27–10/1로 표기 → EASD 공식(9/28–10/2) 우선",v:"ok",links:[["EASD 공식","https://www.easd.org/annual-meeting/"],["EASD 최종 프로그램(PDF)","https://www.easd.org/uploads/EASD2026_Final-Programme.pdf"]]},
+  {id:112,r:"intl",cat:"cardio",soc:"미국심장협회 (AHA)",ev:"Hypertension Scientific Sessions 2026",short:"AHA Hypertension",s:"2026-10-07",e:"2026-10-11",time:"현지 기준",venue:"미국 크리스탈시티(버지니아)",vd:"Hyatt Regency",credit:"해외 학회",notes:["고혈압 전문 학회. 국내 Hypertension Seoul 한 달 전"],v:"ok",links:[["AHA 학술 제출 안내","https://professional.heart.org/en/meetings/scientific-sessions/submit-science"],["AHA 전시 안내","https://exhibitatsessions.org/"]]},
+  {id:113,r:"intl",cat:"gi",soc:"유럽소화기연합 (UEG)",ev:"UEG Week 2026",short:"UEG Week",s:"2026-10-17",e:"2026-10-20",time:"현지 기준",venue:"스페인 바르셀로나",vd:"",credit:"해외 학회",notes:["유럽 최대 소화기 학회. 국내 KDDW(11/19) 한 달 전"],v:"ok",links:[["세계소화기기구 일정","https://www.worldgastroenterology.org/meetings/meetings-and-events-calendar"]]},
+  {id:114,r:"intl",cat:"renal",soc:"미국신장학회 (ASN)",ev:"ASN Kidney Week 2026",short:"ASN Kidney Week",s:"2026-10-21",e:"2026-10-25",time:"현지 기준 · 본회의 10/22–25",venue:"미국 덴버",vd:"Colorado Convention Center",credit:"해외 학회",notes:["세계 최대 신장 학회, 심장-신장-대사(CKM) 트랙"],v:"ok",links:[["노보 노디스크 학회 안내","https://sciencehub.novonordisk.com/congresses/asn2026.html"],["Labcorp 행사 안내","https://www.labcorp.com/education-events/events/asn-kidney-week-2026"]]},
+  {id:115,r:"intl",cat:"onc",soc:"유럽종양내과학회 (ESMO)",ev:"ESMO Congress 2026",short:"ESMO 2026",s:"2026-10-23",e:"2026-10-27",time:"현지 기준 · 하이브리드",venue:"스페인 마드리드",vd:"IFEMA MADRID",credit:"해외 학회",notes:["유럽 최대 항암 학회. 국내 AACR-KCA(11/12)·표적치료 추계 디테일링 소재"],v:"ok",links:[["마드리드 관광청 안내","https://www.esmadrid.com/en/whats-on/esmo-madrid-congress-ifema-madrid"],["학회 개요","https://www.medicmess.com/conferences/esmo-congress-2026"]]},
+  {id:116,r:"intl",cat:"gi",soc:"미국간학회 (AASLD)",ev:"The Liver Meeting 2026",short:"AASLD TLM",s:"2026-11-05",e:"2026-11-09",time:"현지 기준",venue:"미국 덴버",vd:"Colorado Convention Center",credit:"해외 학회",notes:["세계 최대 간 학회. Hypertension Seoul·AHA와 같은 주"],v:"ok",links:[["AASLD 공식","https://www.aasld.org/tlm-26/home"]]},
+  {id:117,r:"intl",cat:"gi",soc:"일본소화기학회 연합",ev:"JDDW 2026",short:"JDDW 2026",s:"2026-11-05",e:"2026-11-07",time:"현지 기준",venue:"일본 고베",vd:"",credit:"해외 학회",notes:["아시아권 소화기 학회. 국내 KOL 연자 참여 잦음"],v:"ok",links:[["세계소화기기구 일정","https://www.worldgastroenterology.org/meetings/meetings-and-events-calendar"]]},
+  {id:118,r:"intl",cat:"cardio",soc:"미국심장협회 (AHA)",ev:"AHA Scientific Sessions 2026",short:"AHA 2026",s:"2026-11-06",e:"2026-11-09",time:"현지 기준 · 전시 11/7–9",venue:"미국 시카고",vd:"McCormick Place",credit:"해외 학회",notes:["약 18,000명 규모. 연말 심혈관 임상 결과 발표 집중"],v:"ok",links:[["AHA 공식","https://professional.heart.org/en/meetings/scientific-sessions"],["AHA 뉴스룸","https://newsroom.heart.org/events/scientific-sessions-2026-public-newsroom"]]},
+  {id:119,r:"intl",cat:"gi",soc:"APDW 조직위",ev:"Asian Pacific Digestive Week 2026",short:"APDW 2026",s:"2026-11-24",e:"2026-11-28",time:"현지 기준",venue:"필리핀 마닐라",vd:"",credit:"해외 학회",notes:["아시아태평양 소화기 학회. KDDW 직후"],v:"ok",links:[["세계소화기기구 일정","https://www.worldgastroenterology.org/meetings/meetings-and-events-calendar"]]},
+  /* ===== 국내: 이비인후과 ===== */
+  {id:201,r:"krintl",cat:"ent",soc:"대한이비인후과학회 · 대한이비인후과의사회",ev:"제100차 학술대회 & ICORL 2026 & 2026 춘계 이비인후과의사회 학술대회",short:"ICORL 2026",s:"2026-04-17",e:"2026-04-19",time:"프로그램 확인",venue:"킨텍스 (KINTEX)",vd:"경기 고양시",credit:"공식 공지 확인 필요",notes:["제100차 학술대회와 국제학술대회 동시 개최","난청·치매 연관성, 차세대 인공와우, 비과 질환 치료 세션"],v:"ok",links:[["학술대회 인사말","https://www.korl.or.kr/workshop/2026spring/hello.html"],["학회 춘계 일정","https://jkorl.org/conference/workshop_view.php?number=29957&cat=S"],["개최 기사","https://www.healthfocus.co.kr/news/articleView.html?idxno=208741"]]},
+  {id:202,r:"kr",cat:"ent",soc:"대한이비인후과학회 부산·울산·경남 지부회",ev:"2026년 6월 지부회 학술대회",short:"이비인후 부울경 6월",s:"2026-06-21",e:"2026-06-21",time:"08:30 등록 시작",venue:"아스티호텔 (부산역)",vd:"22층 그랜드볼룸",credit:"전문의 4점 · 전공의 1점 (예정)",notes:["부울경 개원·봉직 이비인후과 접점"],v:"ok",links:[["지부회 학술대회 공지","https://www.bukorl.org/board/lists?b_name=bo_conference"]]},
+  {id:203,r:"kr",cat:"ent",soc:"대한이비인후과학회 · 대한비과학회",ev:"제32차 이비인후과 종합학술대회 & 제72차 대한비과학회 추계학술대회",short:"이비인후 종합학술",s:"2026-10-21",e:"2026-10-23",time:"프로그램 확인",venue:"부산항국제전시컨벤션센터 (BPEX)",vd:"부산 동구",credit:"공식 공지 확인 필요",notes:["비과학회 추계와 같은 기간·장소","알레르기 비염·만성 부비동염 치료제 접점"],fix:"대한의학회 일정표에는 '제33차, 10/14–16 창원'으로 표기 → 학회 공식(제32차, 10/21–23 부산) 우선",v:"ok",links:[["이비인후과학회 추계 목록","https://www.korl.or.kr/conference/workshop_list.php?cat=F"],["대한의학회 일정","http://www.kams.or.kr/bbs/index.php?code=ws&number=7105&mode=view"]]},
+
+  /* ===== 국내: 소아청소년과 ===== */
+  {id:211,r:"kr",cat:"peds",soc:"대한소아청소년과학회",ev:"제99회 연수강좌 & 제76차 춘계학술대회",short:"소아과학회 춘계",s:"2026-04-09",e:"2026-04-10",time:"4/9 연수강좌 · 4/10 춘계학술대회",venue:"호텔 인터불고 대구",vd:"대구",credit:"공식 공지 확인 필요",notes:["소아 감염·호흡기·알레르기 처방 접점"],v:"ok",links:[["학회 주요학술행사","https://pediatrics.or.kr/calendar/"]]},
+  {id:212,r:"kr",cat:"peds",soc:"대한소아청소년과학회",ev:"제100회 소아청소년과 연수강좌",short:"소아과 연수강좌",s:"2026-10-20",e:"2026-10-20",time:"프로그램 확인",venue:"서울아산병원 (예정)",vd:"동관 6층 대강당",credit:"공식 공지 확인 필요",notes:["ASPR 2026 하루 전"],v:"ok",links:[["학회 주요학술행사","https://pediatrics.or.kr/calendar/"]]},
+  {id:213,r:"krintl",cat:"peds",soc:"대한소아청소년과학회 · 아시아소아청소년과학연구학회",ev:"ASPR 2026 Seoul (제19차 아시아소아청소년과학연구학회 & 추계학술대회)",short:"ASPR 2026",s:"2026-10-21",e:"2026-10-23",time:"프로그램 확인",venue:"롯데호텔월드",vd:"서울 송파구 올림픽로 240",credit:"등록비 USD 150(조기) / 200(후기)",notes:["추계학술대회를 겸한 아시아 국제학회","이비인후과 종합학술대회와 같은 기간"],v:"ok",links:[["ASPR 2026 등록 안내","https://www.aspr2026.org/html/?pmode=reg_guidelines"],["학회 주요학술행사","https://pediatrics.or.kr/calendar/"]]},
+
+  /* ===== 국내: 정형외과 ===== */
+  {id:221,r:"kr",cat:"ortho",soc:"대한정형외과의사회",ev:"2026년 춘계학술대회",short:"정형외과의사회 춘계",s:"2026-03-29",e:"2026-03-29",time:"프로그램 확인",venue:"롯데호텔 서울 (소공동)",vd:"2층 크리스탈볼룸",credit:"공식 공지 확인 필요",notes:["개원 정형외과 원장 대상. 근골격계 통증·골다공증 처방 접점"],v:"ok",links:[["의사회 연수강좌 안내","https://koreanos.org/symposium/list.php"]]},
+  {id:222,r:"kr",cat:"ortho",soc:"대한정형외과학회",ev:"제70차 춘계학술대회 및 연수강좌",short:"정형외과학회 춘계",s:"2026-04-16",e:"2026-04-18",time:"프로그램 확인",venue:"수원컨벤션센터",vd:"경기 수원시",credit:"공식 공지 확인 필요",notes:["4/18 전공의 퀴즈대회"],v:"ok",links:[["학회 연간 일정","https://www.koa.or.kr/schedule/"],["학회 공지","https://koa.or.kr/bbs/?code=s_notice&mode=view&number=18647"]]},
+  {id:223,r:"krintl",cat:"ortho",soc:"대한슬관절학회",ev:"ICKKS 2026 (국제학술대회)",short:"ICKKS 2026",s:"2026-05-08",e:"2026-05-09",time:"프로그램 확인",venue:"그랜드 하얏트 인천",vd:"인천 중구",credit:"공식 공지 확인 필요",notes:["무릎 관절염·인공관절 분야 국제학회"],v:"ok",links:[["정형외과학회 연간 일정","https://www.koa.or.kr/schedule/"]]},
+  {id:224,r:"kr",cat:"ortho",soc:"대한정형외과연구학회",ev:"제52차 추계학술대회",short:"정형외과연구 추계",s:"2026-10-07",e:"2026-10-07",time:"프로그램 확인",venue:"수원컨벤션센터",vd:"202+203 강의실",credit:"공식 공지 확인 필요",notes:["정형외과 기초·중개연구 학회"],v:"ok",links:[["연구학회 홈페이지","https://www.kors.or.kr/"]]},
+  {id:225,r:"krintl",cat:"ortho",soc:"대한정형외과학회",ev:"제70차 국제학술대회 및 연수강좌",short:"정형외과학회 국제",s:"2026-10-08",e:"2026-10-10",time:"프로그램 확인",venue:"코엑스마곡",vd:"서울 강서구",credit:"공식 공지 확인 필요",notes:["정형외과 연중 최대 행사"],fix:"대한의학회 일정표에는 10/6–8로 표기 → 학회 공식(10/8–10) 우선",v:"ok",links:[["학회 연간 일정","https://www.koa.or.kr/schedule/"],["근골격종양학회 일정","https://kmsts.org/conference/schedule"]]},
+  {id:226,r:"kr",cat:"ortho",soc:"대한정형외과의사회",ev:"2026년 추계학술대회 및 정기총회",short:"정형외과의사회 추계",s:"2026-11-29",e:"2026-11-29",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"(전년도는 롯데호텔 서울 개최)",credit:"공식 공지 확인 필요",notes:["개원 정형외과 연중 최대 행사"],v:"partial",links:[["의사회 연수강좌 안내","https://koreanos.org/symposium/list.php"]]},
+
+  /* ===== 국내: 외과 ===== */
+  {id:231,r:"kr",cat:"surg",soc:"대한외과학회",ev:"2026 춘계학술대회 및 외과 내시경 연수강좌",short:"외과학회 춘계",s:"2026-05-29",e:"2026-05-31",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"",credit:"공식 공지 확인 필요",notes:["학회 공지로 일정 확인, 장소는 미확인"],v:"partial",links:[["대한외과학회","https://www.surgery.or.kr/"]]},
+  {id:232,r:"kr",cat:"surg",soc:"대한외과대사영양학회",ev:"제44회 추계학술대회",short:"외과대사영양 추계",s:"2026-09-12",e:"2026-09-12",time:"프로그램 확인",venue:"고신대학교 복음병원",vd:"장기려기념암센터 대강당 · 부산",credit:"공식 공지 확인 필요",notes:["수술 전후 영양·수액 관련"],v:"ok",links:[["학회 공지","https://www.kssmn.org/"]]},
+  {id:233,r:"krintl",cat:"surg",soc:"대한외과학회",ev:"Annual Congress of KSS 2026 (제78차 추계학술대회)",short:"ACKSS 2026",s:"2026-11-05",e:"2026-11-07",time:"프로그램 확인",venue:"스위스그랜드호텔",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["11/8 외과내시경연수강좌 같은 장소","Hypertension Seoul과 같은 기간"],v:"ok",links:[["대한외과학회","https://www.surgery.or.kr/"]]},
+
+  /* ===== 해외: 이비인후·소아·정형·외과 ===== */
+  {id:301,r:"intl",cat:"ortho",soc:"미국정형외과학회 (AAOS)",ev:"AAOS 2026 Annual Meeting",short:"AAOS 2026",s:"2026-03-02",e:"2026-03-06",time:"현지 기준 · 전시 3/3–5",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["세계 최대 정형외과 학회"],v:"ok",links:[["AAOS 공식 FAQ","https://www.aaos.org/annual/attend/attendee-resources/frequently-asked-questions/"],["AAOS 보도자료","https://www.aaos.org/aaos-home/newsroom/press-releases/aaos-2026-annual-meeting-online-press-kit/"]]},
+  {id:302,r:"intl",cat:"peds",soc:"Pediatric Academic Societies (PAS)",ev:"PAS 2026 Meeting",short:"PAS 2026",s:"2026-04-24",e:"2026-04-27",time:"현지 기준",venue:"미국 보스턴",vd:"Thomas M. Menino Convention & Exhibition Center",credit:"해외 학회",notes:["7,500명 이상 참가하는 소아과 연구 최대 학회"],v:"ok",links:[["PAS 공식 참가 안내","https://www.pas-meeting.org/2026-attendee/"],["PAS 보도자료","https://www.prnewswire.com/news-releases/pediatric-academic-societies-2026-meeting-in-boston-bringing-the-global-pediatric-community-together-to-shape-the-future-of-child-health-302633305.html"]]},
+  {id:303,r:"intl",cat:"ortho",soc:"유럽정형외과연합 (EFORT)",ev:"27th EFORT Annual Congress",short:"EFORT 2026",s:"2026-05-04",e:"2026-05-06",time:"현지 기준",venue:"스페인 말라가",vd:"FYCMA (말라가 전시컨벤션센터)",credit:"해외 학회 (유럽 CME 17점)",notes:["3,000명 이상, 160개 이상 세션"],v:"ok",links:[["EFORT 공식","https://efortnet.efort.org/web/efort-congress-malaga-2026"],["EFORT 후원 안내","https://congress.efort.org/partner-with-efort"]]},
+  {id:304,r:"intl",cat:"surg",soc:"미국외과학회 (ACS)",ev:"ACS Clinical Congress 2026",short:"ACS CC 2026",s:"2026-09-26",e:"2026-09-29",time:"현지 기준",venue:"미국 워싱턴 DC",vd:"Walter E. Washington Convention Center",credit:"해외 학회",notes:["외과 전 분야 최대 학회. AI·원격수술 세션 확대"],fix:"일부 사이트는 9/26–10/1로 표기 → ACS 공식(9/26–29) 우선",v:"ok",links:[["ACS 공식","https://www.facs.org/for-medical-professionals/conferences-and-meetings/clinical-congress-2026/"],["ACS 안내 기사","https://www.facs.org/for-medical-professionals/news-publications/news-and-articles/acs-brief/august-4-2026-issue/learn-innovate-and-connect-at-clinical-congress-2026/"]]},
+  {id:305,r:"intl",cat:"peds",soc:"미국소아과학회 (AAP)",ev:"AAP 2026 National Conference & Exhibition",short:"AAP NCE 2026",s:"2026-10-02",e:"2026-10-06",time:"현지 기준 · 온라인 병행",venue:"미국 샌디에이고",vd:"San Diego Convention Center",credit:"해외 학회",notes:["350개 이상 교육 세션, 소아과 최대 임상 학회"],v:"ok",links:[["AAP 공식","https://www.aap.org/2026-National-Conference-Exhibition-ALL-ACCESS-in-person-virtual"]]},
+  {id:306,r:"intl",cat:"ent",soc:"미국이비인후과학회 (AAO-HNSF)",ev:"AAO-HNSF 2026 Annual Meeting & OTO EXPO",short:"AAO-HNSF 2026",s:"2026-10-17",e:"2026-10-20",time:"현지 기준 · 대면 전용",venue:"미국 로스앤젤레스",vd:"Los Angeles Convention Center · 본부호텔 JW Marriott L.A. Live",credit:"해외 학회",notes:["세계 최대 이비인후과 학회. 국내 종합학술대회(10/21) 직전"],v:"ok",links:[["AAO-HNS 공식","https://www.entnet.org/events/annual-meeting/"],["공식 FAQ","https://www.entnet.org/events/annual-meeting/annual-meeting-faqs/"]]},
+  /* ===== 국내: 혈액·소아혈액종양 ===== */
+  {id:401,r:"krintl",cat:"hema",soc:"대한혈액학회",ev:"ICKSH 2026 (국제학술대회 & 제67차 정기학술대회)",short:"ICKSH 2026",s:"2026-03-26",e:"2026-03-28",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구 워커힐로 177",credit:"내과 전공의 외부학술 2점(국제)",notes:["30개국 1,400여 명, 초록 809편으로 역대 최대","미국·유럽 혈액학회 공동 심포지엄, 새틀라이트 심포지엄 운영"],v:"ok",links:[["ICKSH 공식","https://www.icksh.org/"],["개최 기사","http://www.docdocdoc.co.kr/news/articleView.html?idxno=3037742"]]},
+  {id:402,r:"kr",cat:"hema",soc:"대한소아혈액종양학회",ev:"2026 제64차 춘계학술대회",short:"소아혈액종양 춘계",s:"2026-04-17",e:"2026-04-18",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"",credit:"공식 공지 확인 필요",notes:["5/30 춘계연수강좌, 9/5 추계연수강좌 별도"],v:"partial",links:[["학회 일정","https://www.kspho.or.kr/content/events/schedule_list.php"]]},
+  {id:403,r:"kr",cat:"hema",soc:"대한소아혈액종양학회",ev:"2026 제65차 추계학술대회",short:"소아혈액종양 추계",s:"2026-10-23",e:"2026-10-23",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"",credit:"공식 공지 확인 필요",notes:["소아 백혈병·고형암 치료 전문가 대상"],v:"partial",links:[["학회 일정","https://www.kspho.or.kr/content/events/schedule_list.php"]]},
+
+  /* ===== 국내: 산부인과 ===== */
+  {id:411,r:"kr",cat:"obgyn",soc:"대한산부인과개원의사회",ev:"제21차 춘계학술대회",short:"산부인과개원의 춘계",s:"2026-04-12",e:"2026-04-12",time:"프로그램 확인",venue:"스위스그랜드호텔",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["개원 산부인과 원장 대상"],v:"ok",links:[["개원의사회 학술일정","http://obgy.org/n4/40?sst=wr_hit&sod=asc&sop=and&page=1"]]},
+  {id:412,r:"kr",cat:"obgyn",soc:"대한산부인과학회",ev:"산부인과 통합학술대회 2026",short:"산부인과 통합학술",s:"2026-04-25",e:"2026-04-26",time:"프로그램 확인",venue:"장소 공식 확인 필요",vd:"",credit:"공식 공지 확인 필요",notes:["학회 산하 세부 분야 통합 학술대회"],v:"partial",links:[["통합학술대회 안내","https://ksgoc.ksog.org/"]]},
+  {id:413,r:"kr",cat:"obgyn",soc:"대한산부인과개원의사회",ev:"제22차 추계학술대회",short:"산부인과개원의 추계",s:"2026-10-18",e:"2026-10-18",time:"프로그램 확인",venue:"스위스그랜드호텔",vd:"서울 서대문구",credit:"공식 공지 확인 필요",notes:["개원 산부인과 원장 대상"],v:"ok",links:[["개원의사회 학술일정","http://obgy.org/n4/40?sst=wr_hit&sod=asc&sop=and&page=1"]]},
+  {id:414,r:"kr",cat:"obgyn",soc:"대한산부인과초음파학회",ev:"KSUOG 2026 Pre-Congress & 제29차 추계학술대회",short:"KSUOG 2026",s:"2026-10-30",e:"2026-10-31",time:"프로그램 확인",venue:"그랜드 하얏트 인천",vd:"인천 중구",credit:"공식 공지 확인 필요",notes:["산부인과 초음파 진단 학회"],v:"ok",links:[["학회 행사일정","https://www.ksuog.or.kr/"]]},
+  {id:415,r:"krintl",cat:"obgyn",soc:"대한산부인과학회",ev:"제112차 학술대회 & 제31차 Seoul International Symposium",short:"KSOG 2026",s:"2026-11-13",e:"2026-11-14",time:"프로그램 확인 · 공식 언어 영어",venue:"코엑스마곡",vd:"서울 강서구",credit:"사전등록 10/19 마감",notes:["주제 'Together and Beyond Borders for Women's Health'","산부인과 연중 최대 행사"],v:"ok",links:[["KSOG 2026 행사 개요","https://renew.ksog.org/2026/about/overview"],["KSOG 2026 공식","https://renew.ksog.org/2026"]]},
+
+  /* ===== 국내: 피부과 ===== */
+  {id:421,r:"kr",cat:"derm",soc:"대한레이저피부모발학회",ev:"2026 미용의료기기 박람회 및 춘계학술대회",short:"레이저피부모발 춘계",s:"2026-05-03",e:"2026-05-03",time:"09:00–17:00",venue:"코엑스 서울",vd:"Hall C",credit:"공식 공지 확인 필요",notes:["미용·레이저 시술 중심, 박람회 병행"],v:"ok",links:[["코엑스 행사 안내","https://www.coex.co.kr/exhibitions/2026-%EB%8C%80%ED%95%9C%EB%A0%88%EC%9D%B4%EC%A0%80%ED%94%BC%EB%B6%80%EB%AA%A8%EB%B0%9C%ED%95%99%ED%9A%8C-%EB%AF%B8%EC%9A%A9%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B8%B0-%EB%B0%95%EB%9E%8C%ED%9A%8C-%EB%B0%8F/"]]},
+  {id:422,r:"krintl",cat:"derm",soc:"대한피부과학회",ev:"제78차 추계학술대회 (KDA International Autumn Meeting)",short:"피부과학회 추계",s:"2026-10-16",e:"2026-10-18",time:"10/16 Pre-Meeting Day",venue:"웨스틴 서울 파르나스",vd:"서울 강남구 (삼성동)",credit:"공식 공지 확인 필요",notes:["아토피·건선 등 염증성 피부질환 치료제 접점"],v:"ok",links:[["KDA 2026 공식","https://www.kda2026.org/main/"]]},
+  {id:423,r:"kr",cat:"derm",soc:"대한피부과의사회",ev:"KOREADERMA 2026 & 제29회 추계학술대회",short:"KOREADERMA 2026",s:"2026-12-11",e:"2026-12-13",time:"프로그램 확인",venue:"코엑스마곡 컨벤션센터",vd:"서울 강서구",credit:"연수평점 6점 · 사전등록 11/2–11/27",notes:["개원 피부과 연중 최대 행사"],v:"ok",links:[["KOREADERMA 2026","https://xn--vb0bz3y9vbc6qsyab49c.com/conference/"]]},
+
+  /* ===== 국내: 간학회 연구회·심포지엄 ===== */
+  {id:431,r:"kr",cat:"gi",soc:"대한간학회",ev:"제43회 춘계 Single Topic Symposium",short:"간학회 춘계 STS",s:"2026-03-14",e:"2026-03-14",time:"프로그램 확인",venue:"전북대학교병원",vd:"임상연구지원센터 새만금홀 (전북지회 공동)",credit:"공식 공지 확인 필요",notes:["간학회 단일 주제 심포지엄"],v:"ok",links:[["간학회 뉴스레터","https://new.kasl.org/bbs/index.html?category=&code=newsletter&gubun=&key=&keyfield=&mode=view&number=6682&page=8"]]},
+  {id:432,r:"kr",cat:"gi",soc:"대한간학회 지방간연구회",ev:"지방간연구회 집담회",short:"지방간연구회 집담회",s:"2026-04-14",e:"2026-04-14",time:"프로그램 확인",venue:"유한양행 본사",vd:"4층 대강당",credit:"공식 공지 확인 필요",notes:["MASLD·MASH 연구자 모임"],v:"ok",links:[["간학회 뉴스레터","https://new.kasl.org/bbs/index.html?category=&code=newsletter&gubun=&key=&keyfield=&mode=view&number=6682&page=8"]]},
+  {id:433,r:"kr",cat:"gi",soc:"대한간학회",ev:"제10회 전임의·전공의·개원의를 위한 간질환 연수강좌",short:"간질환 연수강좌",s:"2026-07-05",e:"2026-07-05",time:"09:05–15:20",venue:"신촌 세브란스병원",vd:"은명대강당",credit:"내과 평점 4점",notes:["개원의 대상 간질환 진료 실무"],v:"ok",links:[["내과학회 평점 목록","https://www.kaim.or.kr/mobile/schedule/edu_list.php?gubun=1"]]},
+  {id:434,r:"kr",cat:"gi",soc:"대한간암학회",ev:"제74차 Single Topic Conference (KLCA-JLCA-TLCA Joint)",short:"간암학회 STC 74",s:"2026-08-22",e:"2026-08-22",time:"09:30–16:50",venue:"서울아산병원",vd:"대강당 (지하 1층)",credit:"내과 평점 5점",notes:["한·일·대만 간암학회 공동 심포지엄"],v:"ok",links:[["간암학회 일정","https://www.livercancer.or.kr/html/"]]},
+  {id:435,r:"kr",cat:"gi",soc:"대한간학회 지방간연구회",ev:"지방간연구회 정기 심포지엄",short:"지방간연구회 심포",s:"2026-08-29",e:"2026-08-29",time:"프로그램 확인",venue:"유한양행 윌로우하우스",vd:"3층 뉴스퀘어",credit:"공식 공지 확인 필요",notes:["MASLD·MASH 치료 동향"],v:"ok",links:[["간학회 행사일정","https://old.kasl.org/bbs/index.html?code=schedule&mode=view&number=1852"]]},
+  {id:436,r:"kr",cat:"gi",soc:"대한간학회",ev:"제44회 추계 Single Topic Symposium",short:"간학회 추계 STS",s:"2026-09-05",e:"2026-09-05",time:"13:10–16:50",venue:"분당서울대학교병원",vd:"경기인천지회 공동주관",credit:"내과 평점 3점",notes:["세부 강의실은 학회 자료마다 표기가 달라 확인 필요"],v:"ok",links:[["내과학회 평점 목록","https://www.kaim.or.kr/mobile/schedule/edu_list.php?gubun=1"],["간학회 행사일정","https://old.kasl.org/bbs/index.html?code=schedule&mode=view&number=1852"]]},
+  {id:437,r:"kr",cat:"gi",soc:"대한간학회 알코올연구회",ev:"제12회 알코올연구회 정기 심포지움",short:"알코올연구회",s:"2026-10-17",e:"2026-10-17",time:"프로그램 확인",venue:"유한양행 윌로우하우스",vd:"3층 대회의실",credit:"공식 공지 확인 필요",notes:["알코올 관련 간질환(ALD·MetALD) 주제","ICDM·KSC 마지막 날과 같은 날"],v:"ok",links:[["대한간학회 이달의 일정","https://www.kasl.org/index.php"],["10월 학술일정 기사","http://www.healthmedia.co.kr/news/articleView.html?idxno=106897"]]},
+  {id:438,r:"kr",cat:"gi",soc:"대한간암학회",ev:"제75차 Single Topic Conference",short:"간암학회 STC 75",s:"2026-12-18",e:"2026-12-18",time:"17:00",venue:"건국대학교병원",vd:"서울 광진구",credit:"공식 공지 확인 필요",notes:["연말 간암 단일 주제 심포지엄"],v:"ok",links:[["간암학회 일정","https://www.livercancer.or.kr/html/"]]},
+
+  /* ===== 국내: 대장항문·항문질환 ===== */
+  {id:441,r:"kr",cat:"surg",soc:"대한대장항문학회",ev:"제59차 학술대회",short:"대장항문학회",s:"2026-03-27",e:"2026-03-29",time:"프로그램 확인",venue:"롯데호텔 부산",vd:"부산 부산진구",credit:"공식 공지 확인 필요",notes:["대장암·치핵·치루 등 대장항문 전 분야"],v:"ok",links:[["학회 학술대회","https://www.kscp1967.org/program/index.html?subid=10"],["참가 후기","https://www.daiwha.com/ko/post/2026-%EB%8C%80%ED%95%9C%EB%8C%80%EC%9E%A5%ED%95%AD%EB%AC%B8%ED%95%99%ED%9A%8C"]]},
+  {id:442,r:"krintl",cat:"surg",soc:"대한대장항문학회",ev:"iCRS 2026 (International Colorectal Research Summit)",short:"iCRS 2026",s:"2026-09-04",e:"2026-09-06",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구",credit:"공식 공지 확인 필요",notes:["대장항문학회 주관 국제학회"],v:"ok",links:[["학회 행사일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
+  {id:443,r:"kr",cat:"surg",soc:"대한대장항문학회 항문질환연구회",ev:"항문질환연구회 집담회",short:"항문질환연구회 10월",s:"2026-10-18",e:"2026-10-18",time:"프로그램 확인",venue:"유한양행 본사",vd:"4층 강당",credit:"의협 2점 · 학회 1점",notes:["치핵·치루·치열 등 항문질환 진료"],v:"ok",links:[["학회 행사일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
+  {id:444,r:"kr",cat:"surg",soc:"대한대장항문학회 항문질환연구회",ev:"항문질환연구회 집담회",short:"항문질환연구회 12월",s:"2026-12-06",e:"2026-12-06",time:"프로그램 확인",venue:"유한양행 본사",vd:"4층 강당",credit:"의협 2점 · 학회 1점",notes:["연말 정기 집담회"],v:"ok",links:[["학회 행사일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
+
+  /* ===== 국내: 뇌졸중·류마티스·골대사 ===== */
+  {id:451,r:"kr",cat:"neuro",soc:"대한뇌졸중학회",ev:"2026년도 춘계학술대회",short:"뇌졸중학회 춘계",s:"2026-04-18",e:"2026-04-18",time:"프로그램 확인",venue:"호텔 인터불고 대구",vd:"대구",credit:"공식 공지 확인 필요",notes:["가을 WSC 2026 서울 개최 준비 성격"],v:"ok",links:[["뇌졸중학회 일정","https://www.stroke.or.kr/bbs/?code=schedule&last_year=2026"]]},
+  {id:461,r:"krintl",cat:"rheum",soc:"대한류마티스학회",ev:"KCR 2026 (제46차 학술대회 & 제20차 국제심포지엄)",short:"KCR 2026",s:"2026-05-14",e:"2026-05-16",time:"프로그램 확인",venue:"콘래드 서울",vd:"서울 영등포구 국제금융로 10",credit:"내과 전공의 외부학술 2점(국제)",notes:["28개국 이상 850여 명 참석 예정","10월 APLAR 2026 서울 개최 전 국내 최대 류마티스 행사"],v:"ok",links:[["KCR 2026 공식 앱","https://play.google.com/store/apps/details?id=com.mangople.kcr&hl=ko"],["내과학회 평점 목록","https://www.kaim.or.kr/mobile/schedule/edu_list.php?gubun=3"]]},
+  {id:462,r:"krintl",cat:"endo",soc:"대한골대사학회",ev:"SSBH 2026 & 제38차 춘계학술대회",short:"SSBH 2026",s:"2026-06-18",e:"2026-06-20",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구",credit:"공식 공지 확인 필요",notes:["골다공증 치료제 접점 (내분비·류마티스·정형외과 공통)"],v:"ok",links:[["류마티스학회 행사 안내","https://rheum.or.kr/md_event/view.html?num=1226&xtype="]]},
+
+  /* ===== 해외: 혈액·류마티스·피부·뇌졸중·간·대장항문 ===== */
+  {id:501,r:"intl",cat:"neuro",soc:"미국심장협회 (AHA/ASA)",ev:"International Stroke Conference 2026",short:"ISC 2026",s:"2026-02-04",e:"2026-02-06",time:"현지 기준",venue:"미국 뉴올리언스",vd:"",credit:"해외 학회",notes:["미국 최대 뇌졸중 학회"],fix:"2차 출처(학회 목록 기사) 기준",v:"partial",links:[["2026 뇌졸중 학회 목록","https://pubscholars.org/blog/top-stroke-conferences-2026/"]]},
+  {id:502,r:"intl",cat:"gi",soc:"아시아태평양간학회 (APASL)",ev:"APASL 2026",short:"APASL 2026",s:"2026-04-22",e:"2026-04-25",time:"현지 기준",venue:"튀르키예 이스탄불",vd:"",credit:"해외 학회",notes:["아시아태평양 간학회. 국내 간학회 KOL 다수 참석"],v:"ok",links:[["간학회 뉴스레터(해외일정)","https://new.kasl.org/bbs/index.html?category=&code=newsletter&gubun=&key=&keyfield=&mode=view&number=6682&page=8"]]},
+  {id:503,r:"intl",cat:"neuro",soc:"유럽뇌졸중기구 (ESO)",ev:"12th ESOC 2026",short:"ESOC 2026",s:"2026-05-06",e:"2026-05-08",time:"현지 기준",venue:"네덜란드 마스트리흐트",vd:"MECC Maastricht",credit:"해외 학회",notes:["유럽 최대 뇌졸중 학회, 약 5,000명 규모"],v:"ok",links:[["Congrex 행사 안내","https://congrex.com/events/12th-european-stroke-organisation-conference-esoc-2026/"],["마스트리흐트 컨벤션뷰로","https://www.maastrichtconventionbureau.com/news/press-release-leading-global-stroke-conference-coming-to-maastricht-in-2026-5-000-international-participants-to-attend-european-stroke-organisation-conference/"]]},
+  {id:504,r:"intl",cat:"rheum",soc:"유럽류마티스연맹 (EULAR)",ev:"EULAR 2026 Congress",short:"EULAR 2026",s:"2026-06-03",e:"2026-06-06",time:"현지 기준",venue:"영국 런던",vd:"ExCeL London",credit:"해외 학회",notes:["170개 이상 세션, 유럽 최대 류마티스 학회"],v:"ok",links:[["Esaote 행사 안내","https://www.esaote.com/en-US/esaote-group/article/eular-2026/"],["학회 일정 안내","https://pr-medicalevents.com/event/eular-2026/"]]},
+  {id:505,r:"intl",cat:"hema",soc:"유럽혈액학회 (EHA)",ev:"EHA 2026 Congress",short:"EHA 2026",s:"2026-06-11",e:"2026-06-14",time:"현지 기준",venue:"스웨덴 스톡홀름",vd:"Stockholmsmässan",credit:"해외 학회",notes:["유럽 최대 혈액학 학회"],v:"ok",links:[["2026 혈액학 학회 일정","https://www.hematologyadvisor.com/news/hematology-conference-calendar-2026/"]]},
+  {id:506,r:"intl",cat:"hema",soc:"국제소아종양학회 (SIOP)",ev:"SIOP 2026 (제58차)",short:"SIOP 2026",s:"2026-09-15",e:"2026-09-18",time:"현지 기준 · 온라인 병행",venue:"미국 샌안토니오",vd:"Henry B. González Convention Center",credit:"해외 학회",notes:["소아 종양 단일 분야 최대 국제학회"],v:"ok",links:[["SIOP 2026 공식","https://siop-congress.org/general-information/"]]},
+  {id:507,r:"intl",cat:"surg",soc:"유럽대장항문학회 (ESCP)",ev:"ESCP 21st Scientific & Annual Meeting",short:"ESCP 2026",s:"2026-09-23",e:"2026-09-25",time:"현지 기준",venue:"체코 프라하",vd:"",credit:"해외 학회",notes:["유럽 대장항문 학회"],v:"ok",links:[["대장항문학회 행사일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
+  {id:508,r:"intl",cat:"derm",soc:"유럽피부과학회 (EADV)",ev:"35th EADV Congress 2026",short:"EADV 2026",s:"2026-09-30",e:"2026-10-03",time:"현지 기준",venue:"오스트리아 빈",vd:"Austria Center Vienna",credit:"해외 학회",notes:["세계 최대급 피부과 학회, 1만 명 이상"],v:"ok",links:[["EADV 공식","https://eadv.org/congress/about/"]]},
+  {id:509,r:"intl",cat:"rheum",soc:"미국류마티스학회 (ACR)",ev:"ACR Convergence 2026",short:"ACR 2026",s:"2026-11-06",e:"2026-11-11",time:"현지 기준",venue:"미국 올랜도",vd:"Orange County Convention Center (West)",credit:"해외 학회",notes:["세계 최대 류마티스 학회, 생물학제제·JAK 억제제 데이터 발표"],v:"ok",links:[["ACR 공식 등록 안내","https://rheumatology.org/annual-meeting-registration"]]},
+  {id:510,r:"intl",cat:"hema",soc:"미국혈액학회 (ASH)",ev:"68th ASH Annual Meeting & Exposition",short:"ASH 2026",s:"2026-12-12",e:"2026-12-15",time:"현지 기준 · 온라인 병행",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["세계 최대 혈액학 학회, late-breaking 초록 10/14–28 접수"],v:"ok",links:[["ASH 공식","https://www.hematology.org/meetings/annual-meeting/abstracts/call-for-abstracts"]]}
+];
+
+const WD = ["일","월","화","수","목","금","토"];
+const DAY = 86400000;
+function toDate(s){const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+const now = new Date(); const today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+function isIntlGroup(e){return e.r==="intl"}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function fmt(d){return `${d.getMonth()+1}.${String(d.getDate()).padStart(2,"0")} (${WD[d.getDay()]})`}
+function shortRange(e){
+  const a=e.sd,b=e.ed;
+  if(e.s===e.e) return `${a.getMonth()+1}/${a.getDate()}`;
+  if(a.getMonth()===b.getMonth()) return `${a.getMonth()+1}/${a.getDate()}–${b.getDate()}`;
+  return `${a.getMonth()+1}/${a.getDate()}–${b.getMonth()+1}/${b.getDate()}`;
+}
+
+EVENTS.forEach(e=>{e.sd=toDate(e.s);e.ed=toDate(e.e)});
+EVENTS.sort((a,b)=>a.sd-b.sd||a.ed-b.ed);
+EVENTS.forEach(e=>{
+  e.overlap = EVENTS.filter(o=>o!==e && o.sd<=e.ed && e.sd<=o.ed).map(o=>(o.r==="intl"?"해외 ":"")+o.short);
+  e.state = today>e.ed ? "done" : (today>=e.sd ? "live" : "up");
+  e.dday = Math.round((e.sd-today)/DAY);
+});
+function stateTxt(e){return e.state==="done"?"종료":e.state==="live"?"진행 중":"D-"+e.dday}
+
+/* ---------- Theme ---------- */
+(function(){
+  const root=document.documentElement;
+  function current(){return root.getAttribute("data-theme")||"system"}
+  function apply(v){
+    if(v==="system") root.removeAttribute("data-theme"); else root.setAttribute("data-theme",v);
+    try{ v==="system"?localStorage.removeItem("congress-theme"):localStorage.setItem("congress-theme",v); }catch(e){}
+    document.querySelectorAll("#themeSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v));
+  }
+  document.querySelectorAll("#themeSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===current()));
+  document.getElementById("themeSeg").addEventListener("click",e=>{const b=e.target.closest("button");if(b)apply(b.dataset.v)});
+})();
+
+/* ---------- Legend, chips, stats ---------- */
+document.getElementById("legend").innerHTML = Object.entries(CAT).map(([k,v])=>`<span><i style="background:var(--${k})"></i>${v}</span>`).join("");
+document.getElementById("catChips").innerHTML = Object.entries(CAT).map(([k,v])=>`<button type="button" class="chip ${k}" data-c="${k}" aria-pressed="true">${v}</button>`).join("");
+(function(){
+  const kr = EVENTS.filter(e=>!isIntlGroup(e)).length, intl = EVENTS.filter(isIntlGroup).length;
+  const left = EVENTS.filter(e=>e.state!=="done").length;
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${kr}</b><span>국내 행사</span></div><div class="stat"><b>${intl}</b><span>해외 행사</span></div><div class="stat"><b>${left}</b><span>남은 행사</span></div>`;
+})();
+
+/* ---------- Jump to row ---------- */
+function jumpTo(id){
+  if(!document.getElementById("ev-"+id)){resetFilters();render();}
+  const t=document.getElementById("ev-"+id);
+  t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+  t.classList.add("flash"); setTimeout(()=>t.classList.remove("flash"),1400);
+}
+
+/* ---------- Desktop year board ---------- */
+(function(){
+  const y0 = new Date(2026,0,1), days = 365;
+  function lanesFor(list){
+    const lanes=[];
+    list.forEach(e=>{
+      const a=(e.sd-y0)/DAY, b=(e.ed-y0)/DAY+1, w=Math.max(b-a,10);
+      let li=lanes.findIndex(end=>end<=a-1);
+      if(li<0){lanes.push(0);li=lanes.length-1}
+      lanes[li]=a+w; e.lane=li; e.x=a/days*100; e.w=w/days*100;
+    });
+    return lanes.length;
+  }
+  const groups=[
+    {key:"kr",label:"국내",list:EVENTS.filter(e=>!isIntlGroup(e))},
+    {key:"intl",label:"해외",list:EVENTS.filter(isIntlGroup)}
+  ];
+  const tx = today.getFullYear()===2026 ? (today-y0)/DAY/days*100 : null;
+  let html=`<div class="months">${Array.from({length:12},(_,i)=>`<div>${i+1}월</div>`).join("")}</div>`;
+  groups.forEach((g,gi)=>{
+    const H=lanesFor(g.list)*22+12;
+    html+=`<div class="rowlabel ${g.key}" style="height:${H}px">${g.label}<small>${g.list.length}건</small></div>`;
+    html+=`<div class="lanes ${g.key}" style="height:${H}px"><div class="grid">${"<div></div>".repeat(12)}</div>`;
+    g.list.forEach(e=>{
+      html+=`<button type="button" class="bar ${e.cat}${e.state==="done"?" past":""}" style="left:${e.x}%;width:${e.w}%;top:${e.lane*22+6}px" data-id="${e.id}" title="${esc(REG[e.r]+" · "+e.soc+" · "+e.ev)}">${esc(e.short)}</button>`;
+    });
+    if(tx!==null) html+=`<div class="todayline" style="left:${tx}%">${gi===0?`<span>오늘 ${today.getMonth()+1}.${today.getDate()}</span>`:""}</div>`;
+    html+=`</div>`;
+  });
+  const year=document.getElementById("year");
+  year.innerHTML=html;
+  year.addEventListener("click",ev=>{const b=ev.target.closest(".bar");if(b)jumpTo(b.dataset.id)});
+})();
+
+/* ---------- Mobile year view ---------- */
+(function(){
+  const box=document.getElementById("mmonths");
+  const curM = today.getFullYear()===2026 ? today.getMonth() : -1;
+  let html="";
+  for(let m=0;m<12;m++){
+    const list=EVENTS.filter(e=>e.sd.getMonth()===m || (e.sd.getMonth()<m && e.ed.getMonth()>=m));
+    const kr=list.filter(e=>!isIntlGroup(e)), intl=list.filter(isIntlGroup);
+    const item=e=>`<button type="button" class="mitem${e.state==="done"?" past":""}" data-id="${e.id}"><span class="dot" style="background:var(--${e.cat})"></span><span class="md">${shortRange(e)}</span><span class="mn">${esc(e.short)}</span><span class="ms">${stateTxt(e)}</span></button>`;
+    const group=(cls,title,arr)=>`<div class="mgroup ${cls}"><h4>${title} ${arr.length}</h4>${arr.length?arr.map(item).join(""):`<div class="mempty">일정 없음</div>`}</div>`;
+    html+=`<details class="mmonth${m===curM?" current":""}"${(m===curM||m===curM+1)?" open":""}>
+      <summary><span>${m+1}월${m===curM?`<span class="now">이번 달</span>`:""}</span><span><span class="cnt">국내 ${kr.length} · 해외 ${intl.length}</span> <span class="chev" aria-hidden="true">›</span></span></summary>
+      ${group("kr","국내",kr)}${group("intl","해외",intl)}
+    </details>`;
+  }
+  box.innerHTML=html;
+  box.addEventListener("click",ev=>{const b=ev.target.closest(".mitem");if(b)jumpTo(b.dataset.id)});
+  const tg=document.getElementById("mToggleAll");
+  tg.addEventListener("click",()=>{
+    const all=[...box.querySelectorAll("details")]; const open=all.some(d=>!d.open);
+    all.forEach(d=>d.open=open); tg.textContent=open?"모두 접기":"모두 펼치기";
+  });
+})();
+
+/* ---------- Filters & table ---------- */
+const ALLCATS=Object.keys(CAT);
+const state={region:"all",status:"all",cats:new Set(ALLCATS),q:""};
+function setSeg(id,v){document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v))}
+function resetFilters(){
+  state.region="all";state.status="all";state.cats=new Set(ALLCATS);state.q="";
+  setSeg("regionSeg","all");setSeg("statusSeg","all");
+  document.querySelectorAll("#catChips .chip").forEach(b=>b.setAttribute("aria-pressed","true"));
+  document.getElementById("q").value="";
+}
+document.getElementById("regionSeg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;state.region=b.dataset.v;setSeg("regionSeg",b.dataset.v);render()});
+document.getElementById("statusSeg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;state.status=b.dataset.v;setSeg("statusSeg",b.dataset.v);render()});
+document.getElementById("catChips").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;const c=b.dataset.c;
+  state.cats.has(c)?state.cats.delete(c):state.cats.add(c);
+  b.setAttribute("aria-pressed",state.cats.has(c));render();
+});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render()});
+
+function statusBadge(e){
+  if(e.state==="done") return `<span class="status done">종료</span>`;
+  if(e.state==="live") return `<span class="status live">진행 중</span>`;
+  return `<span class="status ${e.dday<=30?"soon":"up"}">D-${e.dday}</span>`;
+}
+function render(){
+  const rows=EVENTS.filter(e=>{
+    if(!state.cats.has(e.cat)) return false;
+    if(state.region==="kr"&&isIntlGroup(e)) return false;
+    if(state.region==="intl"&&!isIntlGroup(e)) return false;
+    if(state.status==="up"&&e.state==="done") return false;
+    if(state.status==="done"&&e.state!=="done") return false;
+    if(state.q&&!(e.soc+e.ev+e.venue+e.vd+e.short).toLowerCase().includes(state.q)) return false;
+    return true;
+  });
+  document.getElementById("count").textContent=`${rows.length}건 표시 (국내 ${rows.filter(e=>!isIntlGroup(e)).length} · 해외 ${rows.filter(isIntlGroup).length})`;
+  const tb=document.getElementById("rows");
+  if(!rows.length){tb.innerHTML=`<tr><td colspan="7" class="empty">조건에 맞는 행사가 없습니다. 필터를 줄이거나 검색어를 바꿔 보세요.</td></tr>`;return}
+  let lastM=-1,out="";
+  rows.forEach(e=>{
+    const m=e.sd.getMonth();
+    if(m!==lastM){out+=`<tr class="monthsep"><td colspan="7">${m+1}월</td></tr>`;lastM=m;}
+    const dateTxt=e.s===e.e?fmt(e.sd):`${fmt(e.sd)} – ${fmt(e.ed)}`;
+    const notes=e.notes.map(n=>`<li>${esc(n)}</li>`).join("")+(e.fix?`<li class="fixnote">${esc(e.fix)}</li>`:"")+(e.overlap.length?`<li class="overlap">동시 기간: ${esc(e.overlap.join(", "))}</li>`:"");
+    const links=e.links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(l)} ↗</a>`).join("");
+    out+=`<tr id="ev-${e.id}" class="${e.cat}${e.state==="done"?" past":""}">
+      <td class="when"><div class="d1">${dateTxt}</div><div class="time">${esc(e.time)}</div>${statusBadge(e)}</td>
+      <td data-label="학회 · 행사명"><div class="tags"><span class="reg ${e.r}">${REG[e.r]}</span><span class="cat ${e.cat}">${CAT[e.cat]}</span></div><div class="soc">${esc(e.soc)}${/유한양행/.test(e.venue)?`<span class="yh">유한양행 사옥</span>`:""}</div><div class="ev">${esc(e.ev)}</div></td>
+      <td data-label="장소"><div class="venue">${esc(e.venue)}</div>${e.vd?`<div class="vd">${esc(e.vd)}</div>`:""}</td>
+      <td class="credit" data-label="평점 · 등록">${esc(e.credit)}</td>
+      <td class="notes" data-label="특이사항"><ul>${notes}</ul></td>
+      <td data-label="검증"><span class="vbadge ${e.v}">${VTXT[e.v]}</span></td>
+      <td class="src" data-label="출처">${links}</td>
+    </tr>`;
+  });
+  tb.innerHTML=out;
+}
+render();
+
+/* ---------- Monthly print ---------- */
+(function(){
+  const dlg=document.getElementById("printDlg"), sel=document.getElementById("pMonth"), area=document.getElementById("printArea");
+  const curM = today.getFullYear()===2026 ? today.getMonth() : 0;
+  sel.innerHTML=Array.from({length:12},(_,i)=>`<option value="${i}"${i===curM?" selected":""}>2026년 ${i+1}월</option>`).join("")+`<option value="all">2026년 전체 (12개월, 월별 1장씩)</option>`;
+
+  function pickEvents(opts){
+    return EVENTS.filter(e=>{
+      if(!opts.kr && !isIntlGroup(e)) return false;
+      if(!opts.intl && isIntlGroup(e)) return false;
+      if(opts.filter && !state.cats.has(e.cat)) return false;
+      return true;
+    });
+  }
+  function monthPage(m,list,opts){
+    const first=new Date(2026,m,1), last=new Date(2026,m+1,0);
+    const inMonth=list.filter(e=>e.sd<=last && e.ed>=first);
+    let cal=`<table class="pcal"><thead><tr>${WD.map((w,i)=>`<th class="${i===0?"sun":i===6?"sat":""}">${w}</th>`).join("")}</tr></thead><tbody>`;
+    let d=new Date(first); d.setDate(1-first.getDay());
+    while(d<=last || d.getDay()!==0){
+      if(d.getDay()===0) cal+="<tr>";
+      const out=d.getMonth()!==m, wd=d.getDay();
+      const evs=out?[]:inMonth.filter(e=>e.sd<=d && e.ed>=d);
+      cal+=`<td class="${out?"out":""} ${wd===0?"sun":wd===6?"sat":""}"><span class="pd-n">${out?"":d.getDate()}</span>${evs.map(e=>`<span class="pe ${e.cat}${isIntlGroup(e)?" intl":""}">${isIntlGroup(e)?"[해외] ":""}${esc(e.short)}</span>`).join("")}</td>`;
+      if(d.getDay()===6) cal+="</tr>";
+      d.setDate(d.getDate()+1);
+      if(d>last && d.getDay()===0) break;
+    }
+    cal+="</tbody></table>";
+    const rows=inMonth.map(e=>`<tr><td>${e.s===e.e?fmt(e.sd):fmt(e.sd)+" – "+fmt(e.ed)}</td><td>${REG[e.r]}</td><td>${CAT[e.cat]}</td><td><b>${esc(e.short)}</b> · ${esc(e.soc)}</td><td>${esc(e.venue)}${e.vd?" · "+esc(e.vd):""}</td><td>${esc(e.credit)}</td></tr>`).join("");
+    const listHtml=inMonth.length
+      ?`<table class="plist"><thead><tr><th style="width:17%">일정</th><th style="width:8%">구분</th><th style="width:11%">분과</th><th>학회 · 행사</th><th style="width:24%">장소</th><th style="width:14%">평점 · 등록</th></tr></thead><tbody>${rows}</tbody></table>`
+      :`<div class="pnone">이 달에 해당하는 행사가 없습니다.</div>`;
+    const legend=`<div class="plegend">${Object.entries(CAT).map(([k,v])=>`<i style="background:var(--${k})"></i>${v}`).join("")} · 기울임꼴 [해외] = 해외 학회(현지 날짜)</div>`;
+    return `<section class="pmonth"><div class="phead"><h2>2026년 ${m+1}월 학술대회 일정</h2></div>${cal}${legend}${listHtml}</section>`;
+  }
+  function build(opts){
+    const list=pickEvents(opts);
+    const months=opts.month==="all"?[...Array(12).keys()]:[Number(opts.month)];
+    area.innerHTML=months.map(m=>monthPage(m,list,opts)).join("");
+  }
+  document.getElementById("openPrint").addEventListener("click",()=>{ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); });
+  document.getElementById("pCancel").addEventListener("click",()=>dlg.close());
+  document.getElementById("pGo").addEventListener("click",()=>{
+    const opts={month:sel.value,kr:document.getElementById("pKr").checked,intl:document.getElementById("pIntl").checked,filter:document.getElementById("pFilter").checked};
+    if(!opts.kr && !opts.intl){alert("국내 또는 해외 중 하나 이상을 선택하세요.");return;}
+    build(opts); dlg.close(); setTimeout(()=>window.print(),80);
+  });
+  /* 브라우저 인쇄(Ctrl+P)를 바로 누른 경우: 이번 달을 출력 */
+  window.addEventListener("beforeprint",()=>{ if(!area.innerHTML.trim()) build({month:String(curM),kr:true,intl:true,filter:false}); });
+  window.addEventListener("afterprint",()=>{ area.innerHTML=""; });
+})();
+
+/* ---------- 날짜가 바뀌면 오늘 표시선·D-day 자동 갱신 ---------- */
+(function(){
+  const loadedDay=today.getTime();
+  const dayChanged=()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()).getTime()!==loadedDay;};
+  const n=new Date(), next=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,0,0,5);
+  setTimeout(()=>location.reload(),next-n);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden&&dayChanged())location.reload();});
+})();
+</script>
+</body>
+</html>
