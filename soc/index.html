@@ -196,6 +196,9 @@ td.src a:hover{text-decoration:underline}
 .panel li b{font-weight:600}
 .foot{margin-top:26px;font-size:12.5px;color:var(--faint);max-width:92ch}
 .foot a{color:var(--muted)}
+.visits{display:flex;gap:16px;margin-top:10px;font-size:12.5px;color:var(--faint);letter-spacing:.02em}
+.visits b{font-weight:700;color:var(--muted);margin-right:4px}
+.visits[hidden]{display:none}
 
 /* Print dialog */
 dialog.pd{border:1px solid var(--rule);border-radius:14px;background:var(--surface);color:var(--ink);padding:22px;width:min(440px,92vw)}
@@ -396,6 +399,10 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
 </div>
 
 <p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 2026년 10월 1일 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
+<div class="visits" id="visits" hidden aria-label="방문자 수">
+  <span id="vWrapToday"><b>V</b><span id="vToday">–</span></span>
+  <span id="vWrapTotal"><b>T</b><span id="vTotal">–</span></span>
+</div>
 </div>
 
 <dialog class="pd" id="printDlg" aria-labelledby="pd-title">
@@ -824,6 +831,65 @@ render();
   const n=new Date(), next=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,0,0,5);
   setTimeout(()=>location.reload(),next-n);
   document.addEventListener("visibilitychange",()=>{if(!document.hidden&&dayChanged())location.reload();});
+})();
+</script>
+<script type="module">
+/* =====================================================================
+   방문자 카운터 설정 — 이 블록만 수정하면 됩니다
+   COUNTER_MODE
+     "today" : 오늘 방문자(V)만 표시. 한국시간 자정에 자동으로 0부터 다시 셉니다.
+     "both"  : 오늘 방문자(V) + 누적 방문자(T) 표시.
+   firebaseConfig : Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹)에서 복사한 값
+   ===================================================================== */
+const COUNTER_MODE = "both";
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  appId: ""
+};
+/* ===================================================================== */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, writeBatch, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+(async function(){
+  const box = document.getElementById("visits");
+  if(!firebaseConfig.projectId || !firebaseConfig.apiKey) return;   // 설정 전에는 숨김
+  const both = COUNTER_MODE === "both";
+  if(!both) document.getElementById("vWrapTotal").remove();
+
+  // 한국시간 기준 날짜 키 (해외에서 열어도 같은 날짜로 집계)
+  const day = new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+  const flagKey = "soc-visit-" + day;
+
+  try{
+    const db = getFirestore(initializeApp(firebaseConfig));
+    const todayRef = doc(db, "soc_daily", day);
+    const totalRef = doc(db, "soc_stats", "total");
+
+    // 같은 브라우저는 하루 1회만 집계 (새로고침·자정 자동갱신으로 중복 집계 방지)
+    let counted = false;
+    try{ counted = localStorage.getItem(flagKey) === "1"; }catch(e){}
+    if(!counted){
+      const batch = writeBatch(db);
+      batch.set(todayRef, {count: increment(1)}, {merge:true});
+      if(both) batch.set(totalRef, {count: increment(1)}, {merge:true});
+      await batch.commit();
+      try{ localStorage.setItem(flagKey, "1"); }catch(e){}
+    }
+
+    const fmtN = n => Number(n||0).toLocaleString("ko-KR");
+    const t = await getDoc(todayRef);
+    document.getElementById("vToday").textContent = fmtN(t.exists() ? t.data().count : 0);
+    if(both){
+      const a = await getDoc(totalRef);
+      document.getElementById("vTotal").textContent = fmtN(a.exists() ? a.data().count : 0);
+    }
+    box.hidden = false;
+  }catch(err){
+    console.warn("방문자 카운터를 불러오지 못했습니다:", err);   // 실패해도 페이지는 정상 동작
+  }
 })();
 </script>
 </body>
