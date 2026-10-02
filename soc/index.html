@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>2026 국내·해외 주요 학술대회 연간 캘린더</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%93%85%3C/text%3E%3C/svg%3E">
 <script>
 /* 저장된 테마를 그리기 전에 적용 (깜빡임 방지) */
 (function(){try{var t=localStorage.getItem("congress-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
@@ -196,8 +197,11 @@ td.src a:hover{text-decoration:underline}
 .panel li b{font-weight:600}
 .foot{margin-top:26px;font-size:12.5px;color:var(--faint);max-width:92ch}
 .foot a{color:var(--muted)}
-.visits{display:flex;gap:16px;margin-top:10px;font-size:12.5px;color:var(--faint);letter-spacing:.02em}
-.visits b{font-weight:700;color:var(--muted);margin-right:4px}
+.lower .panel{display:flex;flex-direction:column}
+.visits{display:flex;gap:18px;margin-top:auto;padding-top:14px;border-top:1px solid var(--rule-soft);font-size:13px;color:var(--muted);letter-spacing:.02em}
+.panel ul + .visits{margin-top:auto}
+.lower .panel ul{margin-bottom:14px}
+.visits b{font-weight:700;color:var(--ink);margin-right:5px}
 .visits[hidden]{display:none}
 
 /* Print dialog */
@@ -395,14 +399,14 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
       <li><b>시간·세부 홀:</b> 공식 프로그램에서 확인되지 않은 경우 "프로그램 확인"으로 표시했습니다.</li>
       <li><b>오늘 표시선:</b> 빨간 선과 D-day는 보는 날짜 기준으로 계산되며, 페이지를 열어둔 채 날짜가 바뀌면 자동으로 갱신됩니다.</li>
     </ul>
+    <div class="visits" id="visits" hidden aria-label="방문자 수">
+      <span id="vWrapToday" title="오늘 방문자 (한국시간 기준)"><b>V</b><span id="vToday">–</span></span>
+      <span id="vWrapTotal" title="누적 방문자"><b>T</b><span id="vTotal">–</span></span>
+    </div>
   </section>
 </div>
 
 <p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 2026년 10월 1일 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
-<div class="visits" id="visits" hidden aria-label="방문자 수">
-  <span id="vWrapToday"><b>V</b><span id="vToday">–</span></span>
-  <span id="vWrapTotal"><b>T</b><span id="vTotal">–</span></span>
-</div>
 </div>
 
 <dialog class="pd" id="printDlg" aria-labelledby="pd-title">
@@ -842,16 +846,12 @@ render();
    firebaseConfig : Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹)에서 복사한 값
    ===================================================================== */
 const COUNTER_MODE = "both";
- const firebaseConfig = {
-    apiKey: "AIzaSyCPbVlihJa0197bY7tTddXP8nu11QC6A-4",
-    authDomain: "notice-soc.firebaseapp.com",
-    projectId: "notice-soc",
-    storageBucket: "notice-soc.firebasestorage.app",
-    messagingSenderId: "385171750225",
-    appId: "1:385171750225:web:f984993a0e5a359d2e6770",
-    measurementId: "G-YSSSPQBNQM"
-  };
-
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  appId: ""
+};
 /* ===================================================================== */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
