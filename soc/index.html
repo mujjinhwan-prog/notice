@@ -283,24 +283,31 @@ dialog.pd p.hint{margin:0 0 16px;font-size:13px;color:var(--muted)}
   body{background:#fff;font-size:9pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap,dialog{display:none!important}
   #printArea{display:block}
-  .pmonth{break-after:page;page-break-after:always}
-  .pmonth:last-child{break-after:auto;page-break-after:auto}
+  .ppage{break-after:page;page-break-after:always}
+  .ppage:last-child{break-after:auto;page-break-after:auto}
+  .pcalpage{height:189mm;display:flex;flex-direction:column;overflow:hidden}
+  .pcell{overflow:hidden;padding:2px 3px}
+  .phead small{font-size:10pt;font-weight:600;color:#555;margin-left:8px}
   .phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #111;padding-bottom:4px;margin-bottom:6px}
   .phead h2{margin:0;font-size:16pt}
   .phead span{font-size:8.5pt;color:#555}
   .pcal{width:100%;border-collapse:collapse;table-layout:fixed}
   .pcal th{font-size:8.5pt;font-weight:700;padding:3px;border:1px solid #bbb;background:#f2f2f2}
   .pcal th.sun,.pcal td.sun .pd-n{color:#C0392B} .pcal th.sat,.pcal td.sat .pd-n{color:#2754C5}
-  .pcal td{border:1px solid #bbb;vertical-align:top;height:24mm;padding:2px 3px;overflow:hidden}
+  .pcal td{border:1px solid #bbb;vertical-align:top;padding:0}
   .pcal td.out{background:#f7f7f7}
-  .pd-n{font-size:8.5pt;font-weight:700}
-  .pe{display:block;font-size:7pt;line-height:1.25;margin-top:1.5px;padding:0 3px;border-left:3px solid;border-radius:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pd-n{font-size:9.5pt;font-weight:700}
+  .pcal.compact .pe{font-size:6.9pt;line-height:1.22;margin-top:1px}
+  .pmore{display:block;font-size:7pt;font-weight:700;color:#444;margin-top:2px;padding-left:3px}
+  .pe{display:block;font-size:7.8pt;line-height:1.32;margin-top:2px;padding:0 3px;border-left:3px solid;border-radius:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pe.intl{font-style:italic}
   .pe.cardio{border-color:var(--cardio);background:var(--cardio-bg)} .pe.endo{border-color:var(--endo);background:var(--endo-bg)}
   .pe.neuro{border-color:var(--neuro);background:var(--neuro-bg)} .pe.renal{border-color:var(--renal);background:var(--renal-bg)}
   .pe.gi{border-color:var(--gi);background:var(--gi-bg)} .pe.onc{border-color:var(--onc);background:var(--onc-bg)} .pe.etc{border-color:var(--etc);background:var(--etc-bg)}
-  .plist{width:100%;border-collapse:collapse;margin-top:6px;font-size:7.8pt}
-  .plist th,.plist td{border:1px solid #ccc;padding:2px 4px;text-align:left;vertical-align:top}
+  .plist{width:100%;border-collapse:collapse;margin-top:4px;font-size:8.6pt}
+  .plist thead{display:table-header-group}
+  .plist ul{margin:0;padding-left:12px}
+  .plist th,.plist td{border:1px solid #ccc;padding:3px 5px;text-align:left;vertical-align:top;line-height:1.35}
   .plist th{background:#f2f2f2}
   .plist tr{break-inside:avoid}
   .plegend{font-size:7.5pt;color:#555;margin-top:4px}
@@ -430,7 +437,7 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
 <dialog class="pd" id="printDlg" aria-labelledby="pd-title">
   <form method="dialog" id="printForm">
     <h3 id="pd-title">월별 일정 출력</h3>
-    <p class="hint">A4 가로 한 장에 달력과 행사 목록이 함께 나옵니다. 인쇄 창에서 "PDF로 저장"을 고르면 파일로 받을 수 있습니다.</p>
+    <p class="hint">A4 가로로 1페이지에는 달력, 2페이지부터는 행사 상세 목록이 나옵니다. 인쇄 창에서 "PDF로 저장"을 고르면 파일로 받을 수 있습니다.</p>
     <div class="field">
       <label for="pMonth">출력할 달</label>
       <select id="pMonth"></select>
@@ -817,24 +824,37 @@ render();
   function monthPage(m,list,opts){
     const first=new Date(2026,m,1), last=new Date(2026,m+1,0);
     const inMonth=list.filter(e=>e.sd<=last && e.ed>=first);
-    let cal=`<table class="pcal"><thead><tr>${WD.map((w,i)=>`<th class="${i===0?"sun":i===6?"sat":""}">${w}</th>`).join("")}</tr></thead><tbody>`;
+    /* 1페이지: 달력이 A4 가로 한 장을 꽉 채우도록 주 수에 맞춰 칸 높이 계산 */
+    const weeks=Math.ceil((first.getDay()+last.getDate())/7);
+    const rowH=+((189-13-8-7)/weeks).toFixed(1);   // 본문 189mm - 제목 - 범례 - 요일줄
+    /* 하루 행사가 많으면 글자를 줄이고, 그래도 넘치면 "+N건"으로 표시 */
+    const dayEvs=dt=>inMonth.filter(e=>e.sd<=dt && e.ed>=dt);
+    let maxEv=0; for(let x=new Date(first);x<=last;x.setDate(x.getDate()+1)) maxEv=Math.max(maxEv,dayEvs(x).length);
+    const usable=rowH-5;
+    const normalCap=Math.floor(usable/4.2), compact=maxEv>normalCap;
+    const cap=compact?Math.floor(usable/3.45):normalCap;
+    let cal=`<table class="pcal${compact?" compact":""}"><thead><tr>${WD.map((w,i)=>`<th class="${i===0?"sun":i===6?"sat":""}">${w}</th>`).join("")}</tr></thead><tbody>`;
     let d=new Date(first); d.setDate(1-first.getDay());
-    while(d<=last || d.getDay()!==0){
-      if(d.getDay()===0) cal+="<tr>";
-      const out=d.getMonth()!==m, wd=d.getDay();
-      const evs=out?[]:inMonth.filter(e=>e.sd<=d && e.ed>=d);
-      cal+=`<td class="${out?"out":""} ${wd===0?"sun":wd===6?"sat":""}"><span class="pd-n">${out?"":d.getDate()}</span>${evs.map(e=>`<span class="pe ${e.cat}${isIntlGroup(e)?" intl":""}">${isIntlGroup(e)?"[해외] ":""}${esc(e.short)}</span>`).join("")}</td>`;
-      if(d.getDay()===6) cal+="</tr>";
-      d.setDate(d.getDate()+1);
-      if(d>last && d.getDay()===0) break;
+    for(let w=0;w<weeks;w++){
+      cal+="<tr>";
+      for(let k=0;k<7;k++){
+        const out=d.getMonth()!==m, wd=d.getDay();
+        const evs=out?[]:dayEvs(d);
+        const shown=evs.length>cap?evs.slice(0,cap-1):evs;
+        const more=evs.length-shown.length;
+        cal+=`<td class="${out?"out":""} ${wd===0?"sun":wd===6?"sat":""}"><div class="pcell" style="height:${rowH}mm"><span class="pd-n">${out?"":d.getDate()}</span>${shown.map(e=>`<span class="pe ${e.cat}${isIntlGroup(e)?" intl":""}">${isIntlGroup(e)?"[해외] ":""}${esc(e.short)}</span>`).join("")}${more?`<span class="pmore">+${more}건 · 상세 목록 참고</span>`:""}</div></td>`;
+        d.setDate(d.getDate()+1);
+      }
+      cal+="</tr>";
     }
     cal+="</tbody></table>";
-    const rows=inMonth.map(e=>`<tr><td>${e.s===e.e?fmt(e.sd):fmt(e.sd)+" – "+fmt(e.ed)}</td><td>${REG[e.r]}</td><td>${CAT[e.cat]}</td><td><b>${esc(e.short)}</b> · ${esc(e.soc)}</td><td>${esc(e.venue)}${e.vd?" · "+esc(e.vd):""}</td><td>${esc(e.credit)}</td></tr>`).join("");
-    const listHtml=inMonth.length
-      ?`<table class="plist"><thead><tr><th style="width:17%">일정</th><th style="width:8%">구분</th><th style="width:11%">분과</th><th>학회 · 행사</th><th style="width:24%">장소</th><th style="width:14%">평점 · 등록</th></tr></thead><tbody>${rows}</tbody></table>`
-      :`<div class="pnone">이 달에 해당하는 행사가 없습니다.</div>`;
-    const legend=`<div class="plegend">${Object.entries(CAT).map(([k,v])=>`<i style="background:var(--${k})"></i>${v}`).join("")} · 기울임꼴 [해외] = 해외 학회(현지 날짜)</div>`;
-    return `<section class="pmonth"><div class="phead"><h2>2026년 ${m+1}월 학술대회 일정</h2></div>${cal}${legend}${listHtml}</section>`;
+    const legend=`<div class="plegend">${Object.entries(CAT).map(([k,v])=>`<i style="background:var(--${k})"></i>${v}`).join("")} · 기울임꼴 [해외] = 해외 학회(현지 날짜)${inMonth.length?` · 상세 목록은 다음 페이지`:` · 이 달에 해당하는 행사가 없습니다`}</div>`;
+    const calPage=`<section class="ppage pcalpage"><div class="phead"><h2>2026년 ${m+1}월 학술대회 일정</h2></div>${cal}${legend}</section>`;
+    if(!inMonth.length) return calPage;
+    /* 2페이지부터: 상세 목록 (넘치면 표 머리글을 반복하며 다음 장으로 이어짐) */
+    const rows=inMonth.map(e=>`<tr><td>${e.s===e.e?fmt(e.sd):fmt(e.sd)+" – "+fmt(e.ed)}<br><span style="color:#666">${esc(e.time)}</span></td><td>${REG[e.r]}</td><td>${CAT[e.cat]}</td><td><b>${esc(e.short)}</b><br>${esc(e.soc)}<br><span style="color:#555">${esc(e.ev)}</span></td><td>${esc(e.venue)}${e.vd?"<br><span style=\"color:#666\">"+esc(e.vd)+"</span>":""}</td><td>${esc(e.credit)}</td><td><ul>${e.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></td></tr>`).join("");
+    const listPage=`<section class="ppage"><div class="phead"><h2>2026년 ${m+1}월 학술대회 일정<small>상세 목록 · ${inMonth.length}건</small></h2></div><table class="plist"><thead><tr><th style="width:13%">일정</th><th style="width:7%">구분</th><th style="width:9%">분과</th><th style="width:22%">학회 · 행사</th><th style="width:18%">장소</th><th style="width:12%">평점 · 등록</th><th>특이사항</th></tr></thead><tbody>${rows}</tbody></table></section>`;
+    return calPage+listPage;
   }
   function build(opts){
     const list=pickEvents(opts);
