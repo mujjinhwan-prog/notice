@@ -212,6 +212,22 @@ td.src a:hover{text-decoration:underline}
 .panel ul{margin:0;padding-left:20px}
 .panel li{margin-bottom:8px;font-size:13.5px;max-width:72ch}
 .panel li b{font-weight:600}
+.upd{margin-top:22px;background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px 22px}
+.upd-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
+.upd-head h3{margin:0;font-size:16px}
+.upd-date{font-size:12.5px;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:2px 10px}
+.upd-intro{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+.upd-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.upd-list li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.55}
+.upd-list li b{font-weight:600}
+.utag{flex:none;min-width:44px;text-align:center;font-size:11.5px;font-weight:600;border-radius:6px;padding:2px 6px;margin-top:1px}
+.utag.add{color:var(--ok);background:var(--ok-bg)}
+.utag.chg{color:var(--part);background:var(--part-bg)}
+.utag.chk{color:var(--muted);background:var(--bg);border:1px solid var(--rule)}
+.utag.wait{color:var(--none);background:var(--none-bg)}
+.upd details{margin-top:12px;font-size:13px;color:var(--muted)}
+.upd summary{cursor:pointer}
+.upd details p{margin:6px 0 0}
 .foot{margin-top:26px;font-size:12.5px;color:var(--faint);max-width:92ch}
 .foot a{color:var(--muted)}
 .footrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:26px}
@@ -414,7 +430,7 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
       <li><b>11월 초 순환기·간:</b> 국내 Hypertension Seoul(11/5–7)이 해외 AHA(11/6–9), AASLD(11/5–9)와 겹칩니다.</li>
       <li><b>외과계·소아·이비인후 일정:</b> 해외 AAP(10/2–6) 직후 대한정형외과학회 국제학술대회(10/8–10, 코엑스마곡)가 열리고, 이비인후과 종합학술대회와 ASPR 2026(소아)은 10/21–23로 같은 주에 겹칩니다. 대한외과학회 ACKSS(11/5–7)는 Hypertension Seoul과 일정이 같습니다.</li>
       <li><b>유한양행 사옥 개최:</b> 간학회 알코올연구회(10/17, 윌로우하우스), 항문질환연구회 집담회(10/18·12/6, 본사 4층 강당)가 남아 있습니다. 검색창에 "유한양행"을 입력하면 모아 볼 수 있습니다.</li>
-      <li><b>마감 임박:</b> Hypertension Seoul 사전등록 10/9, AACR-KCA 사전접수 10/16, KDDW 사전등록 10/23.</li>
+      <li><b>마감 임박:</b> AACR-KCA 사전접수 10/16, 산부인과학회(KSOG) 사전등록 10/19, KDDW 사전등록 10/23. Hypertension Seoul 사전등록은 10/9에 끝났습니다.</li>
       <li><b>해외 학회 후속 활동:</b> ESMO·AHA·AASLD 핵심 결과를 D+7 내 요약해 KDDW·ICKNA 등 국내 행사 디테일링에 활용하세요.</li>
     </ul>
   </section>
@@ -429,8 +445,22 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
   </section>
 </div>
 
+<section class="upd" id="updates" aria-labelledby="updTitle">
+  <div class="upd-head"><h3 id="updTitle">업데이트 안내</h3><span class="upd-date">2026.10.13 반영</span></div>
+  <p class="upd-intro">10월 1일 이후 학회 공지와 전문지 보도를 다시 확인했습니다. 날짜가 바뀐 행사는 없고, 아래 내용이 추가·보완되었습니다.</p>
+  <ul class="upd-list">
+    <li><span class="utag add">추가</span><span><b>MDS 2026</b> (국제파킨슨병·이상운동질환학회, 10/4–8, 코엑스) — 서울에서 열린 국제 학회라 기록용으로 넣었습니다. 이미 끝난 행사입니다.</span></li>
+    <li><span class="utag add">추가</span><span><b>KSGE Days 2026</b> (대한소화기내시경학회 창립 50주년, 9/4–5, 더그랜드롯데 서울) — 이미 끝난 행사이며, 기사 출처 기준이라 "일부 확인"으로 표시했습니다.</span></li>
+    <li><span class="utag chg">보완</span><span><b>Hypertension Seoul 2026</b> (11/5–7, 콘래드 서울) — 일차성 알도스테론증·CKM 세션이 포함된 프로그램이 공개됐고 전면 대면으로 진행됩니다. 온라인 사전등록은 10/9에 마감되어 현장등록 여부는 사무국에 확인하세요.</span></li>
+    <li><span class="utag chg">보완</span><span><b>마감 임박 안내</b>를 오늘 기준으로 바꿨습니다: AACR-KCA 사전접수 10/16, KSOG 사전등록 10/19, KDDW 사전등록 10/23.</span></li>
+    <li><span class="utag chk">재확인</span><span><b>ICDM 2026</b> (10/15–17, 코엑스마곡)과 <b>소아혈액종양학회 추계</b>(10/23) 날짜는 공식 일정표에서 그대로 확인됐습니다.</span></li>
+    <li><span class="utag wait">확인 중</span><span><b>소아혈액종양학회 추계</b> 장소와 <b>정형외과의사회 추계</b>(11/29) 장소는 아직 공지되지 않았습니다. 공지가 나오면 다음 업데이트에 반영하겠습니다.</span></li>
+  </ul>
+  <details><summary>이전 업데이트</summary><p>2026.10.01 — 이비인후과·소아청소년과·정형외과·외과·혈액·산부인과·피부과·류마티스·간학회 등으로 진료과 확대, 유한양행 사옥 개최 행사 표시, 월별 인쇄 기능 추가.</p></details>
+</section>
+
 <div class="footrow">
-  <p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 <span id="updFoot">2026년 10월 1일</span> 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
+  <p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 <span id="updFoot">2026년 10월 13일</span> 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
   <div class="visits" id="visits" hidden aria-label="방문자 수">
     <span id="vWrapToday" title="오늘 방문자 (한국시간 기준)"><b>V</b><span id="vToday">–</span></span>
     <span id="vWrapTotal" title="누적 방문자"><b>T</b><span id="vTotal">–</span></span>
@@ -484,7 +514,7 @@ const EVENTS = [
   {id:16,r:"kr",cat:"cardio",soc:"한국지질·동맥경화학회",ev:"ICoLA 2026 (제15회 국제학술대회)",short:"ICoLA 2026",s:"2026-09-10",e:"2026-09-12",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"서울 영등포구 국제금융로 10",credit:"공식 공지 확인 필요",notes:["Lp(a)·인클리시란·잔여 심혈관 위험 집중","유한양행 등 국내사 다수 참여"],v:"ok",links:[["지질동맥경화학회","https://www.lipid.or.kr/index_kor.php"],["현장 기사","https://www.medipharmhealth.co.kr/news/article.html?no=119583"]]},
   {id:21,r:"kr",cat:"cardio",soc:"대한심장학회",ev:"KSC 2026 (제70차 추계학술대회)",short:"KSC 2026",s:"2026-10-15",e:"2026-10-17",time:"프로그램 확인",venue:"그랜드 워커힐 서울",vd:"서울 광진구 워커힐로 177",credit:"공식 공지 확인 필요",notes:["ACC·JCS·APSC 등 해외학회 공동 세션, 심혈관대사 세션 포함"],v:"ok",links:[["KSC 2026 프로그램","https://ksc2026.or.kr/program/at/"],["심장학회 일정","https://www.circulation.or.kr/eng/"]]},
   {id:24,r:"kr",cat:"cardio",soc:"대한부정맥학회",ev:"KHRS 2026 & APHRS 2026",short:"KHRS·APHRS",s:"2026-10-21",e:"2026-10-24",time:"프로그램 확인",venue:"부산 벡스코",vd:"부산 해운대구",credit:"공식 공지 확인 필요",notes:["아시아태평양 부정맥 국제학술대회 동시 개최","항응고제·심방세동 관련"],v:"ok",links:[["대한의학회 일정",KAMS(7968)],["심장학회 10월 캘린더","https://circulation.or.kr/main_cal.php?category=&code=&month=10&page_type=&type=&year=2026"]]},
-  {id:31,r:"kr",cat:"cardio",soc:"대한고혈압학회",ev:"Hypertension Seoul 2026 (제65회 추계국제학술대회)",short:"Hypertension Seoul",s:"2026-11-05",e:"2026-11-07",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"서울 영등포구 국제금융로 10",credit:"온라인 사전등록 10/9 마감",notes:["주제: 2026 고혈압 진료지침의 현실 진료 적용","고령·고위험군 목표혈압, AI·원격 모니터링 세션"],v:"ok",links:[["개최 기사(간호사신문)","https://www.nursenews.co.kr/news/articleView.html?idxno=44050"],["개최 기사(라포르시안)","https://www.rapportian.com/news/articleView.html?idxno=240174"]]},
+  {id:31,r:"kr",cat:"cardio",soc:"대한고혈압학회",ev:"Hypertension Seoul 2026 (제65회 추계국제학술대회)",short:"Hypertension Seoul",s:"2026-11-05",e:"2026-11-07",time:"프로그램 확인",venue:"콘래드 서울 (여의도)",vd:"서울 영등포구 국제금융로 10",credit:"온라인 사전등록 10/9 마감 (종료) · 현장등록 확인",notes:["주제: 2026 고혈압 진료지침의 현실 진료 적용","고령·고위험군 목표혈압, AI·원격 모니터링 세션","일차성 알도스테론증·심혈관-신장-대사(CKM) 세션 포함, 전면 대면 진행"],v:"ok",links:[["개최 기사(간호사신문)","https://www.nursenews.co.kr/news/articleView.html?idxno=44050"],["개최 기사(라포르시안)","https://www.rapportian.com/news/articleView.html?idxno=240174"],["프로그램 기사(메디칼타임즈)","https://www.medicaltimes.com/Main/News/NewsView.html?ID=1170625"]]},
 
   /* ===== 국내: 내분비 ===== */
   {id:3,r:"kr",cat:"endo",soc:"대한내분비학회",ev:"SICEM 2026 (제14회 서울국제내분비학술대회)",short:"SICEM 2026",s:"2026-04-09",e:"2026-04-11",time:"개막 4/9 14:00 · 폐막 4/11 16:20",venue:"그랜드 하얏트 인천",vd:"메인 Room 1 (Hyatt Regency B1)",credit:"공식 공지 확인 필요",notes:["33개국 참여, 초록 925편 역대 최다"],v:"ok",links:[["내분비학회 학술대회","https://www.endocrinology.or.kr/conference/"],["성료 기사","https://www.monews.co.kr/news/articleView.html?idxno=410649"]]},
@@ -631,11 +661,13 @@ const EVENTS = [
   {id:507,r:"intl",cat:"surg",soc:"유럽대장항문학회 (ESCP)",ev:"ESCP 21st Scientific & Annual Meeting",short:"ESCP 2026",s:"2026-09-23",e:"2026-09-25",time:"현지 기준",venue:"체코 프라하",vd:"",credit:"해외 학회",notes:["유럽 대장항문 학회"],v:"ok",links:[["대장항문학회 행사일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
   {id:508,r:"intl",cat:"derm",soc:"유럽피부과학회 (EADV)",ev:"35th EADV Congress 2026",short:"EADV 2026",s:"2026-09-30",e:"2026-10-03",time:"현지 기준",venue:"오스트리아 빈",vd:"Austria Center Vienna",credit:"해외 학회",notes:["세계 최대급 피부과 학회, 1만 명 이상"],v:"ok",links:[["EADV 공식","https://eadv.org/congress/about/"]]},
   {id:509,r:"intl",cat:"rheum",soc:"미국류마티스학회 (ACR)",ev:"ACR Convergence 2026",short:"ACR 2026",s:"2026-11-06",e:"2026-11-11",time:"현지 기준",venue:"미국 올랜도",vd:"Orange County Convention Center (West)",credit:"해외 학회",notes:["세계 최대 류마티스 학회, 생물학제제·JAK 억제제 데이터 발표"],v:"ok",links:[["ACR 공식 등록 안내","https://rheumatology.org/annual-meeting-registration"]]},
-  {id:510,r:"intl",cat:"hema",soc:"미국혈액학회 (ASH)",ev:"68th ASH Annual Meeting & Exposition",short:"ASH 2026",s:"2026-12-12",e:"2026-12-15",time:"현지 기준 · 온라인 병행",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["세계 최대 혈액학 학회, late-breaking 초록 10/14–28 접수"],v:"ok",links:[["ASH 공식","https://www.hematology.org/meetings/annual-meeting/abstracts/call-for-abstracts"]]}
+  {id:510,r:"intl",cat:"hema",soc:"미국혈액학회 (ASH)",ev:"68th ASH Annual Meeting & Exposition",short:"ASH 2026",s:"2026-12-12",e:"2026-12-15",time:"현지 기준 · 온라인 병행",venue:"미국 뉴올리언스",vd:"Ernest N. Morial Convention Center",credit:"해외 학회",notes:["세계 최대 혈액학 학회, late-breaking 초록 10/14–28 접수"],v:"ok",links:[["ASH 공식","https://www.hematology.org/meetings/annual-meeting/abstracts/call-for-abstracts"]]},
+  {id:511,r:"krintl",cat:"neuro",soc:"국제파킨슨병·이상운동질환학회 (MDS)",ev:"MDS 2026 International Congress of Parkinson's Disease and Movement Disorders",short:"MDS 2026 서울",s:"2026-10-04",e:"2026-10-08",time:"프로그램 확인",venue:"코엑스 (서울)",vd:"서울 강남구",credit:"국제 학회 (국내 개최)",notes:["파킨슨병·이상운동질환 세계 최대 학회의 서울 개최","10/13 업데이트로 추가 (종료된 행사)"],v:"ok",links:[["MDS 행사 일정","https://www.movementdisorders.org/Events"]]},
+  {id:512,r:"krintl",cat:"gi",soc:"대한소화기내시경학회",ev:"KSGE Days 2026 (창립 50주년)",short:"KSGE Days 2026",s:"2026-09-04",e:"2026-09-05",time:"프로그램 확인",venue:"더그랜드롯데 서울",vd:"서울",credit:"공식 공지 확인 필요",notes:["학회 창립 50주년 기념 국제학술대회","10/13 업데이트로 추가 (종료된 행사)"],v:"partial",links:[["개최 기사(메디팜헬스)","https://medipharmhealth.co.kr/news/article.html?no=119323"]]},
 ];
 
 /* 일정 점검 후 이 날짜만 바꾸면 상단·하단 표시가 함께 바뀝니다 */
-const LAST_UPDATED = "2026-10-01";
+const LAST_UPDATED = "2026-10-13";
 (function(){
   const [y,m,d]=LAST_UPDATED.split("-").map(Number);
   document.getElementById("updDate").textContent=`${y}.${String(m).padStart(2,"0")}.${String(d).padStart(2,"0")}`;
