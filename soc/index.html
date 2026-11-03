@@ -243,6 +243,11 @@ td.src a:hover{text-decoration:underline}
 .foot{margin-top:26px;font-size:12.5px;color:var(--faint);max-width:92ch}
 .foot a{color:var(--muted)}
 .footrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:26px}
+.footwrap{flex:1;min-width:0}
+.soclist{margin-top:10px;font-size:12.5px;color:var(--faint);max-width:92ch}
+.soclist summary{cursor:pointer;color:var(--muted);font-weight:600}
+.soclist h4{margin:10px 0 4px;font-size:12px;color:var(--muted);font-weight:600}
+.soclist p{margin:0;line-height:1.7}
 .footrow .foot{margin-top:0}
 .visits{display:flex;gap:18px;flex-shrink:0;font-size:13px;color:var(--muted);letter-spacing:.02em;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:6px 14px}
 @media (max-width:760px){.footrow{flex-direction:column;align-items:flex-start;gap:12px}}
@@ -485,6 +490,7 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
   <p class="upd-intro">메디파나뉴스·데일리메디·메디포뉴스 등 의학 전문 매체의 학회 소식과 대한의학회·당뇨병학회·대장항문학회 공식 일정을 기존 일정과 하나씩 대조했습니다. 중복은 제외하고, 새로운 학회 5건을 넣고 1건의 일정을 바로잡았습니다.</p>
   <ul class="upd-list">
     <li><span class="utag add">신규</span><span><b>검색 학회 8곳 추가</b> — 대한암예방학회·병리학회·심장혈관흉부외과학회·의용생체공학회·이과학회·생리학회·핵의학회·견·주관절의학회. 9건을 새로 넣었고(견·주관절 추계와 Politzer는 이미 있음), 병리·핵의학·생리·의용생체는 새 분과 <b>기초·진단의학</b>으로 묶었습니다.</span></li>
+    <li><span class="utag add">해외</span><span><b>같은 분야 해외 학회 11건 추가</b> — USCAP·ECP(병리), SNMMI·EANM(핵의학), APS Summit(생리), EMBC(의용생체), AATS·EACTS(흉부외과), COSM(이과), ICSES(견·주관절), AACR(암 연구·예방). 2027 미리보기에도 STS·USCAP·APS Summit·COSM·AATS·SNMMI 6건을 넣었습니다.</span></li>
     <li><span class="utag chg">변경</span><span><b>생리학회 가을학술대회</b>는 대한의학회 일정표(11/5–6 송도)와 학회 발표 기사(11/3–5 성남 가천컨벤션센터)가 달라 기사 기준으로 넣고 '일부 확인'으로 표시했습니다.</span></li>
     <li><span class="utag add">신규</span><span><b>2027 미리보기</b> — 제목 옆 버튼을 누르면 2027년 1~6월 국내 8건·해외 21건을 같은 형식(연간 보드·월별·상세 표·월별 출력)으로 볼 수 있습니다.</span></li>
     <li><span class="utag chg">변경</span><span><b>족부족관절학회 추계</b>: 11/20–21 고려대 → <b>11/26–27 그랜드 워커힐 서울</b>(제36차). 학회가 직접 낸 보도자료 기준이며, 대한의학회 일정표와 달라 '일부 확인'으로 표시했습니다. 사전등록 11/22 마감.</span></li>
@@ -509,7 +515,7 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
   <p class="upd-intro">2026 캘린더와 같은 방식(학회 공식 사이트 → 대한의학회 일정표 → 의학 전문 매체 순)으로 찾았고, 날짜와 장소가 발표된 행사만 달력에 넣었습니다. 2027년 1~6월은 아직 공지 전인 학회가 많아 매월 점검 때 계속 채워집니다.</p>
   <ul class="upd-list">
     <li><span class="utag add">국내</span><span><b>확정 8건:</b> ICKSH(3월), 대장항문학회(4/3–5, 제주), SICEM(4/8–10), 춘계심혈관통합(4/16–17, 벡스코), 이비인후과 춘계(4/16–18), GBCC(4/22–24), 당뇨병학회 춘계(5/27–29, 제주) 등</span></li>
-    <li><span class="utag add">해외</span><span><b>확정 21건:</b> ISC·ECCO·AAOS·AAD·APASL·AACR·ACC·PAS·AAN·DDW·ECO·ESOC·EFORT·ERA·ASCO·ENDO·EULAR·EHA·EAN·EASL·ADA</span></li>
+    <li><span class="utag add">해외</span><span><b>확정 27건:</b> STS·ISC·ECCO·AAOS·USCAP·AAD·APASL·APS Summit·AACR·COSM·ACC·PAS·AAN·AATS·DDW·ECO·ESOC·EFORT·ERA·ASCO·SNMMI·ENDO·EULAR·EHA·EAN·EASL·ADA</span></li>
     <li><span class="utag wait">주의</span><span><b>ICKSH 2027</b>은 공식 사이트 카운트다운 기준 개막일(3/26)만 확인되어 '일부 확인'입니다. <b>ACC.27</b>·<b>ECO 2027</b>도 공식 사이트 외 출처 기준입니다.</span></li>
   </ul>
   <h3 style="margin:16px 0 0;font-size:14px">아직 날짜가 발표되지 않은 주요 국내 학회</h3>
@@ -525,7 +531,8 @@ tr.hema td.when{border-left-color:var(--hema)} tr.obgyn td.when{border-left-colo
 </section>
 
 <div class="footrow">
-  <p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 학회 공지와 전문지 보도를 근거로 <span id="updFoot">2026년 11월 3일</span> 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
+  <div class="footwrap"><p class="foot">학회 공식 사이트, 대한의학회 학술대회 일정(<a href="https://www.kams.or.kr/bbs/?code=ws" target="_blank" rel="noopener noreferrer">kams.or.kr</a>), 대한신경과학회 국내외행사일정(<a href="https://renew.neuro.or.kr/kr/board_list/do-schedule?year=2026" target="_blank" rel="noopener noreferrer">neuro.or.kr</a>), 대한정형외과학회 연간 일정(<a href="https://www.koa.or.kr/schedule/" target="_blank" rel="noopener noreferrer">koa.or.kr</a>), 대한소아청소년과학회 주요학술행사(<a href="https://pediatrics.or.kr/calendar/" target="_blank" rel="noopener noreferrer">pediatrics.or.kr</a>), 대한당뇨병학회 학술행사(<a href="https://www.diabetes.or.kr/bbs/?code=schedule" target="_blank" rel="noopener noreferrer">diabetes.or.kr</a>), 대한대장항문학회 행사일정(<a href="https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3" target="_blank" rel="noopener noreferrer">colon.or.kr</a>), 의학 전문지(메디포뉴스·메디파나뉴스·데일리메디·메디칼타임즈·메디팜헬스) 보도를 근거로 <span id="updFoot">2026년 11월 3일</span> 기준으로 정리했습니다. 해외 학회 날짜는 현지 날짜입니다. 후원·출장 계약 전에는 각 학회 사무국에 최종 확인하세요.</p>
+  <details class="soclist" id="socList"><summary>검색 대상 학회 보기 <span id="socCount"></span></summary><div id="socBody"></div></details></div>
   <div class="visits" id="visits" hidden aria-label="방문자 수">
     <span id="vWrapToday" title="오늘 방문자 (한국시간 기준)"><b>V</b><span id="vToday">–</span></span>
     <span id="vWrapTotal" title="누적 방문자"><b>T</b><span id="vTotal">–</span></span>
@@ -758,7 +765,18 @@ const EVENTS_2026 = [
   {id:1206,r:"krintl",cat:"basic",soc:"대한핵의학회",ev:"제65차 추계학술대회 (아시아 지역 학술행사 병행)",short:"핵의학회 추계",s:"2026-11-06",e:"2026-11-07",time:"프로그램 확인",venue:"세종대학교 컨벤션센터",vd:"서울 광진구",credit:"공식 공지 확인 필요",notes:["PET·방사성의약품 분야","11/3 검색 학회 추가"],v:"ok",links:[["대한의학회 학술대회 일정","https://www.kams.or.kr/bbs/?code=ws"]]},
   {id:1207,r:"krintl",cat:"surg",soc:"대한심장혈관흉부외과학회",ev:"APCIS 2026",short:"APCIS 2026",s:"2026-11-12",e:"2026-11-13",time:"프로그램 확인",venue:"용산 드래곤시티",vd:"서울 용산구",credit:"공식 공지 확인 필요",notes:["흉부외과 국제 심포지엄","AACR-KCA와 같은 날","11/3 검색 학회 추가"],v:"ok",links:[["대한의학회 학술대회 일정","https://www.kams.or.kr/bbs/?code=ws"]]},
   {id:1208,r:"kr",cat:"ent",soc:"대한이과학회",ev:"제73차 대한이과학회 학술대회",short:"이과학회",s:"2026-10-21",e:"2026-10-23",time:"프로그램 확인",venue:"부산항국제전시컨벤션센터 (BPEX)",vd:"부산 동구",credit:"공식 공지 확인 필요",notes:["이비인후과 종합학술대회와 같은 기간·장소","11/3 검색 학회 추가"],v:"ok",links:[["대한의학회 학술대회 일정","https://www.kams.or.kr/bbs/?code=ws"]]},
-  {id:1209,r:"kr",cat:"surg",soc:"대한심장혈관흉부외과학회",ev:"제27차 심장판막질환포럼 2026 with STS",short:"판막질환포럼",s:"2026-09-10",e:"2026-09-11",time:"프로그램 확인",venue:"롯데호텔 서울",vd:"서울 중구",credit:"공식 공지 확인 필요",notes:["미국흉부외과학회(STS) 4년 연속 공동 개최","11/3 검색 학회 추가"],v:"partial",links:[["개최 기사(메디칼타임즈)","https://www.medicaltimes.com/Main/News/NewsView.html?ID=1170757"]]}
+  {id:1209,r:"kr",cat:"surg",soc:"대한심장혈관흉부외과학회",ev:"제27차 심장판막질환포럼 2026 with STS",short:"판막질환포럼",s:"2026-09-10",e:"2026-09-11",time:"프로그램 확인",venue:"롯데호텔 서울",vd:"서울 중구",credit:"공식 공지 확인 필요",notes:["미국흉부외과학회(STS) 4년 연속 공동 개최","11/3 검색 학회 추가"],v:"partial",links:[["개최 기사(메디칼타임즈)","https://www.medicaltimes.com/Main/News/NewsView.html?ID=1170757"]]},
+  {id:1301,r:"intl",cat:"basic",soc:"미국·캐나다병리학회 (USCAP)",ev:"115th USCAP Annual Meeting",short:"USCAP 2026",s:"2026-03-21",e:"2026-03-26",time:"현지 기준",venue:"미국 샌안토니오",vd:"",credit:"해외 학회",notes:["병리 분야 세계 최대 학회","11/3 해외 학회 추가"],v:"ok",links:[["USCAP 2026 안내(The Pathologist)","https://thepathologist.com/events/uscap-2026-premier-pathology-meeting/"]]},
+  {id:1311,r:"intl",cat:"onc",soc:"미국암연구학회 (AACR)",ev:"AACR Annual Meeting 2026",short:"AACR 2026",s:"2026-04-17",e:"2026-04-22",time:"현지 기준",venue:"미국 샌디에이고",vd:"San Diego Convention Center",credit:"해외 학회",notes:["암 기초·예방·초기 임상 연구","11/3 해외 학회 추가"],v:"ok",links:[["AACR 2026 보도자료","https://www.aacr.org/about-the-aacr/newsroom/media-advisories/thousands-of-cancer-researchers-to-attend-major-scientific-conference-in-san-diego-april-17-22/"]]},
+  {id:1309,r:"intl",cat:"ent",soc:"Triological Society 외 (COSM)",ev:"COSM 2026 (Combined Otolaryngology Spring Meetings)",short:"COSM 2026",s:"2026-04-22",e:"2026-04-26",time:"현지 기준",venue:"미국 피닉스",vd:"Phoenix Convention Center",credit:"해외 학회",notes:["미국이과학회(AOS) 등 이비인후과 연합 춘계 학회","11/3 해외 학회 추가"],v:"ok",links:[["COSM 2026 안내(UAB)","https://bb.uab.edu/medicine/news/otolaryngology/your-uab-otolaryngology-guide-to-the-cosm-2026-annual-meeting"]]},
+  {id:1307,r:"intl",cat:"basic",soc:"미국생리학회 (APS)",ev:"American Physiology Summit 2026",short:"APS Summit 2026",s:"2026-04-23",e:"2026-04-26",time:"현지 기준",venue:"미국 미니애폴리스",vd:"",credit:"해외 학회",notes:["생리학 분야 연례 학회","11/3 해외 학회 추가"],v:"ok",links:[["IUPS 행사 안내","https://www.iups.org/event/american-physiology-summit-2026"]]},
+  {id:1303,r:"intl",cat:"surg",soc:"미국흉부외과학회 (AATS)",ev:"106th AATS Annual Meeting",short:"AATS 2026",s:"2026-05-02",e:"2026-05-05",time:"현지 기준",venue:"미국 시카고",vd:"",credit:"해외 학회",notes:["심장·흉부외과 학회","11/3 해외 학회 추가"],v:"partial",links:[["참가 후기(Emergency USA)","https://www.emergencyusa.org/2026/05/"]]},
+  {id:1305,r:"intl",cat:"basic",soc:"미국핵의학·분자영상학회 (SNMMI)",ev:"SNMMI 2026 Annual Meeting",short:"SNMMI 2026",s:"2026-05-30",e:"2026-06-02",time:"현지 기준",venue:"미국 로스앤젤레스",vd:"Los Angeles Convention Center",credit:"해외 학회",notes:["핵의학·방사성의약품 최대 학회","11/3 해외 학회 추가"],v:"ok",links:[["SNMMI 연례회의","https://snmmi.org/am"]]},
+  {id:1308,r:"intl",cat:"basic",soc:"IEEE 의공학회 (EMBS)",ev:"IEEE EMBC 2026 (48th Annual International Conference)",short:"EMBC 2026",s:"2026-07-26",e:"2026-07-30",time:"현지 기준",venue:"캐나다 토론토",vd:"Metro Toronto Convention Centre",credit:"해외 학회",notes:["의용생체공학 분야 최대 국제학회","11/3 해외 학회 추가"],v:"ok",links:[["EMBC 2026 공식","https://embc.embs.org/2026/faqs/"]]},
+  {id:1302,r:"intl",cat:"basic",soc:"유럽병리학회 (ESP)",ev:"38th European Congress of Pathology (ECP 2026)",short:"ECP 2026",s:"2026-09-12",e:"2026-09-16",time:"현지 기준",venue:"스웨덴 스톡홀름",vd:"Stockholmsmässan",credit:"해외 학회",notes:["유럽 병리 학회","11/3 해외 학회 추가"],v:"ok",links:[["ESP 행사 안내","https://www.esp-pathology.org/?p=12133"]]},
+  {id:1310,r:"intl",cat:"ortho",soc:"국제견주관절수술위원회 (IBSES)",ev:"ICSES 2026 (16th International Congress of Shoulder and Elbow Surgery)",short:"ICSES 2026",s:"2026-09-22",e:"2026-09-25",time:"현지 기준",venue:"캐나다 밴쿠버",vd:"Vancouver Convention Centre",credit:"해외 학회",notes:["3년마다 열리는 세계 견·주관절 학회","11/3 해외 학회 추가"],v:"ok",links:[["밴쿠버 컨벤션센터","https://www.vancouverconventioncentre.com/events/international-congress-of-shoulder-and-elbow-surgery-icses"],["관련 기사(메디포뉴스)","https://www.medifonews.com/news/article.html?no=216213"]]},
+  {id:1304,r:"intl",cat:"surg",soc:"유럽심장흉부외과학회 (EACTS)",ev:"40th EACTS Annual Meeting",short:"EACTS 2026",s:"2026-10-07",e:"2026-10-10",time:"현지 기준",venue:"스페인 바르셀로나",vd:"",credit:"해외 학회",notes:["유럽 심장흉부외과 학회 (40주년)","11/3 해외 학회 추가"],v:"ok",links:[["EACTS 2026 미리보기(TCTMD)","https://www.tctmd.com/news/eacts-2026-what-expect-barcelona"]]},
+  {id:1306,r:"intl",cat:"basic",soc:"유럽핵의학회 (EANM)",ev:"EANM'26 Annual Congress",short:"EANM 2026",s:"2026-10-17",e:"2026-10-21",time:"현지 기준",venue:"오스트리아 빈",vd:"",credit:"해외 학회",notes:["유럽 핵의학 학회","11/3 해외 학회 추가"],v:"ok",links:[["EANM'26 공식","https://eanm26.eanm.org/information/welcomewords/"]]}
 ];
 const EVENTS_2027 = [
   {id:1001,r:"kr",cat:"surg",soc:"대한대장항문학회 IBD·복강경대장수술연구회",ev:"IBD & 복강경대장수술연구회 집담회",short:"IBD·복강경 집담회",s:"2027-01-15",e:"2027-01-15",time:"프로그램 확인",venue:"서울아산병원",vd:"서울 송파구",credit:"공식 공지 확인 필요",notes:["대장항문학회 공식 일정표 등재"],v:"ok",links:[["대장항문학회 행사 일정","https://www.colon.or.kr/event_schedule/index.kin?gubun=1&tabs=3"]]},
@@ -790,6 +808,12 @@ const EVENTS_2027 = [
   {id:1119,r:"intl",cat:"neuro",soc:"유럽신경과학회 (EAN)",ev:"13th EAN Congress 2027",short:"EAN 2027",s:"2027-06-12",e:"2027-06-15",time:"현지 기준",venue:"스웨덴 예테보리",vd:"",credit:"해외 학회",notes:["유럽 신경과 학회"],v:"ok",links:[["EAN 2027 공식","https://www.ean.org/congress2027/session-guidelines"]]},
   {id:1120,r:"intl",cat:"gi",soc:"유럽간학회 (EASL)",ev:"EASL Congress 2027",short:"EASL 2027",s:"2027-06-16",e:"2027-06-19",time:"현지 기준",venue:"영국 런던",vd:"",credit:"해외 학회",notes:["유럽 간 학회"],v:"ok",links:[["EASL 향후 일정","https://easl.eu/easl-congress/future-easl-congress-dates/"]]},
   {id:1121,r:"intl",cat:"endo",soc:"미국당뇨병학회 (ADA)",ev:"ADA 87th Scientific Sessions",short:"ADA 2027",s:"2027-06-18",e:"2027-06-21",time:"현지 기준",venue:"미국 워싱턴 DC",vd:"Walter E. Washington Convention Center",credit:"해외 학회",notes:["당뇨병 세계 최대 학회","공식 페이지 이미지 문구(6/10–21)와 본문(6/18–21)이 달라 본문 기준"],v:"ok",links:[["ADA Scientific Sessions","https://professional.diabetes.org/scientific-sessions"]]},
+  {id:1122,r:"intl",cat:"surg",soc:"미국흉부외과의사회 (STS)",ev:"63rd STS Annual Meeting",short:"STS 2027",s:"2027-01-28",e:"2027-01-31",time:"현지 기준",venue:"미국 샌디에이고",vd:"San Diego Convention Center",credit:"해외 학회",notes:["심장·흉부외과 학회"],v:"ok",links:[["STS 공식","https://www.sts.org/calendar-of-events/63rd-sts-annual-meeting"]]},
+  {id:1123,r:"intl",cat:"basic",soc:"미국·캐나다병리학회 (USCAP)",ev:"116th USCAP Annual Meeting",short:"USCAP 2027",s:"2027-03-13",e:"2027-03-18",time:"현지 기준",venue:"캐나다 밴쿠버",vd:"Vancouver Convention Centre",credit:"해외 학회",notes:["병리 분야 세계 최대 학회"],v:"ok",links:[["IAC 행사 안내","https://www.cytology-iac.org/events/2025-07-12/"]]},
+  {id:1124,r:"intl",cat:"basic",soc:"미국생리학회 (APS)",ev:"American Physiology Summit 2027",short:"APS Summit 2027",s:"2027-04-01",e:"2027-04-03",time:"현지 기준",venue:"미국 덴버",vd:"",credit:"해외 학회",notes:["생리학 분야 연례 학회"],v:"ok",links:[["APS 향후 일정","https://www.physiology.org/professional-development/meetings-events/future-aps-conferences?SSO=Y"]]},
+  {id:1125,r:"intl",cat:"ent",soc:"Triological Society 외 (COSM)",ev:"COSM 2027 (Combined Otolaryngology Spring Meetings)",short:"COSM 2027",s:"2027-04-07",e:"2027-04-11",time:"현지 기준",venue:"미국 시애틀",vd:"Sheraton Grand Seattle",credit:"해외 학회",notes:["미국이과학회(AOS) 등 이비인후과 연합 춘계 학회"],v:"ok",links:[["Triological Society 향후 일정","https://triological.org/page/future-meetings"]]},
+  {id:1126,r:"intl",cat:"surg",soc:"미국흉부외과학회 (AATS)",ev:"107th AATS Annual Meeting",short:"AATS 2027",s:"2027-05-01",e:"2027-05-04",time:"현지 기준",venue:"미국 로스앤젤레스",vd:"Los Angeles Convention Center",credit:"해외 학회",notes:["심장·흉부외과 학회"],v:"ok",links:[["AATS 향후 일정","https://www.aats.org/all-future-meetings"]]},
+  {id:1127,r:"intl",cat:"basic",soc:"미국핵의학·분자영상학회 (SNMMI)",ev:"SNMMI 2027 Annual Meeting",short:"SNMMI 2027",s:"2027-06-05",e:"2027-06-08",time:"현지 기준",venue:"미국 워싱턴 DC",vd:"",credit:"해외 학회",notes:["핵의학·방사성의약품 최대 학회"],v:"ok",links:[["SNMMI 연례회의","https://snmmi.org/am"]]}
 ];
 const YEAR = (()=>{try{return new URLSearchParams(location.search).get("y")==="2027"?2027:2026}catch(e){return 2026}})();
 const NMON = YEAR===2027 ? 6 : 12;
@@ -843,6 +867,18 @@ function stateTxt(e){return e.state==="done"?"종료":e.state==="live"?"진행 �
   const up=document.getElementById("updates"); if(up) up.style.display="none";
   document.getElementById("p27").hidden=false;
   const lw=document.querySelector(".lower"); if(lw) lw.style.gridTemplateColumns="1fr";
+})();
+
+
+/* ---------- Searched society list (auto from data) ---------- */
+(function(){
+  const uniq=arr=>[...new Set(arr)];
+  const split=e=>e.soc.split(/\s+·\s+/).map(x=>x.replace(/\s*\(\d+개 학회 공동\)/,"").trim()).filter(Boolean);
+  const all=[...EVENTS_2026,...EVENTS_2027];
+  const kr=uniq(all.filter(e=>e.r!=="intl").flatMap(split)).sort((a,b)=>a.localeCompare(b,"ko"));
+  const intl=uniq(all.filter(e=>e.r==="intl").flatMap(split)).sort((a,b)=>a.localeCompare(b,"ko"));
+  document.getElementById("socCount").textContent=`(국내 ${kr.length}곳 · 해외 ${intl.length}곳)`;
+  document.getElementById("socBody").innerHTML=`<h4>국내 학회·연구회 ${kr.length}곳</h4><p>${kr.map(esc).join(", ")}</p><h4>해외 학회 ${intl.length}곳</h4><p>${intl.map(esc).join(", ")}</p>`;
 })();
 
 /* ---------- Theme ---------- */
