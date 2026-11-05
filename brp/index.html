@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BRP insight 수급대시보드</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,6 +138,28 @@ td .badge{white-space:nowrap;display:inline-block}
 tr.flash td{background:var(--accent-soft)}
 .area-dot{display:inline-block;width:8px;height:8px;border-radius:2px}
 .msg{font-size:12.5px;color:var(--sub)}
+.opp-list,.m-desc,.m-count{display:none}
+.opp-list{list-style:none;margin:0;padding:0;flex-direction:column;gap:10px}
+.om{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.om-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:var(--soft);font-size:12px;color:var(--sub)}
+.om-head .no{font-family:var(--f-num);font-weight:600;color:var(--ink);margin-right:6px}
+.om-body{display:flex;flex-direction:column;padding:12px 14px 4px}
+.om-row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:start}
+.om-tag{font-size:11px;font-weight:700;text-align:center;border-radius:6px;padding:3px 0;margin-top:2px}
+.om-tag.out{background:var(--risk-soft);color:var(--risk)}
+.om-tag.in{background:var(--opp);color:#fff}
+.om-row b{display:block;font-size:15.5px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
+.om-row small{display:block;font-size:12.5px;color:var(--sub);margin-top:2px;word-break:keep-all}
+.om-row.to b{color:var(--opp)}
+.om-arrow{display:grid;grid-template-columns:44px 1fr;gap:10px;color:var(--mute);font-size:14px;line-height:1;padding:6px 0}
+.om-arrow span{text-align:center}
+.om details{border-top:1px solid var(--line);margin-top:10px}
+.om summary{list-style:none;cursor:pointer;padding:10px 14px;font-size:13px;font-weight:600;color:var(--accent);display:flex;justify-content:space-between;align-items:center}
+.om summary::-webkit-details-marker{display:none}
+.om summary:after{content:"＋";font-weight:400}
+.om details[open] summary:after{content:"－"}
+.om .om-more{padding:0 14px 14px;font-size:13.5px;line-height:1.65;color:var(--sub);display:flex;flex-direction:column;gap:8px}
+.om .om-more b{color:var(--ink)}
 .scope{display:flex;gap:10px;align-items:flex-start;background:var(--soft);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--sub);margin:-4px 0 14px}
 .scope b{color:var(--ink)}
 .scope .badge{flex:none;margin-top:1px}
@@ -157,7 +181,15 @@ tr.flash td{background:var(--accent-soft)}
   .hero p{display:none}
   .hero h1 .tag{display:none}
   .panel{padding:18px 14px}
-  .grid-opp{grid-template-columns:1fr}
+  .grid-opp,.d-only{display:none}
+  .opp-list{display:flex}
+  .m-desc{display:block;margin:0 0 14px;color:var(--sub);font-size:13.5px;line-height:1.6}
+  .m-count{display:inline;margin-left:auto;font-family:var(--f-num);font-size:13px;color:var(--opp)}
+  .sec-opp{border:0;padding:4px 0 0;border-radius:0}
+  .sec-opp h2{font-size:18px}
+  .sec-opp h2 .badge{display:none}
+  .hero h1{font-size:26px}
+  .stats{border-top:1px solid var(--line);padding-top:12px;width:100%;justify-content:space-between}
   /* table → 카드형 */
   .tbl-wrap{border:0;overflow:visible}
   table{min-width:0;table-layout:auto}
@@ -202,9 +234,11 @@ tr.flash td{background:var(--accent-soft)}
   </section>
 
   <section class="panel sec-opp" aria-labelledby="h-opp">
-    <h2 id="h-opp">기회요인 <span class="badge b-opp">경쟁사 품절 → 유한 전환</span></h2>
-    <p class="desc">성분이 달라 약국 대체조제는 불가하므로, 처방의 대상 <b>계열 전환(처방 변경) 디테일</b>이 필요한 기회입니다. 우선순위는 품절 순위·순위 상승폭·품절 지속기간·전환 난이도를 합산한 값입니다. 유한양행 취급 여부와 현재 재고는 배포 전 확인해 주세요.</p>
+    <h2 id="h-opp">기회요인 <span class="badge b-opp">경쟁사 품절 → 유한 전환</span><span class="m-count" id="opp-count"></span></h2>
+    <p class="desc d-only">성분이 달라 약국 대체조제는 불가하므로, 처방의 대상 <b>계열 전환(처방 변경) 디테일</b>이 필요한 기회입니다. 우선순위는 품절 순위·순위 상승폭·품절 지속기간·전환 난이도를 합산한 값입니다. 유한양행 취급 여부와 현재 재고는 배포 전 확인해 주세요.</p>
+    <p class="m-desc">경쟁사 품절 품목을 유한양행 품목으로 처방 전환할 수 있는 기회입니다. 우선순위 순으로 정렬했고, 품목을 누르면 전환 포인트가 열립니다.</p>
     <div class="grid-opp" id="opp"></div>
+    <ol class="opp-list" id="opp-m"></ol>
   </section>
 
   <section class="panel sec-risk" aria-labelledby="h-risk">
@@ -447,6 +481,21 @@ function renderOpp(){
       <div class="act"><b>실행</b> · ${esc(d.opp.act)} <span class="badge b-mute" style="margin-left:4px">난이도 ${['','쉬움','보통','어려움'][d.opp.diff]}</span></div>
     </article>`;}).join('') : `<p class="msg">현재 데이터에서 대체 후보가 매칭된 품목이 없습니다.</p>`;
   $('#s-opp').textContent=list.length;
+  $('#opp-count').textContent=list.length+'건';
+  $('#opp-m').innerHTML = list.map((d,i)=>{
+    const lv = d.score>=max*0.75?['높음','b-opp']:d.score>=max*0.45?['보통','b-warn']:['낮음','b-mute'];
+    const tr = d.kind==='신규' ? (d.val==='-'?'순위 유지':d.val) : d.val;
+    return `<li class="om">
+      <div class="om-head"><span><span class="no">${i+1}</span>${d.kind} ${d.rank}위 · ${esc(tr)}</span><span class="badge ${lv[1]}">우선 ${lv[0]}</span></div>
+      <div class="om-body">
+        <div class="om-row"><span class="om-tag out">품절</span><div><b>${esc(d.name)}</b><small>${esc(d.maker)} · ${esc(d.ing)}</small></div></div>
+        <div class="om-arrow" aria-hidden="true"><span>↓</span></div>
+        <div class="om-row to"><span class="om-tag in">유한</span><div><b>${esc(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div></div>
+      </div>
+      <details><summary>전환 포인트 · 난이도 ${['','쉬움','보통','어려움'][d.opp.diff]}</summary>
+        <div class="om-more"><span>${esc(d.opp.why)}</span><span><b>실행</b> · ${esc(d.opp.act)}</span></div>
+      </details>
+    </li>`;}).join('');
 }
 function renderRisk(){
   const own=DATA.filter(d=>d.risk).sort((a,b)=>(b.kind==='장기')-(a.kind==='장기')||a.rank-b.rank);
