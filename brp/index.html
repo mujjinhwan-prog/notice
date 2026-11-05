@@ -79,7 +79,19 @@ button{font-family:inherit;cursor:pointer}
 .chip.is-opp{background:var(--cc);color:#fff;box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--opp)}
 .chip.is-risk{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--risk);background:var(--cc);color:#fff}
 .chip:hover{filter:brightness(1.05);transform:translateY(-1px)}
-@media (prefers-reduced-motion:reduce){.chip:hover{transform:none}}
+/* 기회요인 반짝 하이라이트 */
+.chip.is-opp{overflow:hidden;font-weight:700;animation:glow 2.4s ease-in-out infinite;animation-delay:calc(var(--i,0) * .35s)}
+.chip.is-opp::after,.flow .to::after,.om-tag.in::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.6) 50%,transparent 65%);transform:translateX(-130%);
+  animation:shine 3.2s ease-in-out infinite;animation-delay:calc(var(--i,0) * .35s)}
+.flow .to::after{background:linear-gradient(110deg,transparent 35%,color-mix(in srgb,var(--opp) 22%,transparent) 50%,transparent 65%)}
+.flow .to,.om-tag.in{position:relative;overflow:hidden}
+.spark{display:inline-block;font-size:11px;line-height:1;color:#FFE27A;animation:twinkle 1.6s ease-in-out infinite;animation-delay:calc(var(--i,0) * .35s)}
+.flow .to .spark,.om-row.to .spark{color:var(--warn);margin-left:4px;vertical-align:2px}
+@keyframes shine{0%{transform:translateX(-130%)}55%,100%{transform:translateX(130%)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.75) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--opp)}50%{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--opp),0 0 14px 3px color-mix(in srgb,var(--opp) 55%,transparent)}}
+@media (prefers-reduced-motion:reduce){.chip:hover{transform:none}.chip.is-opp,.chip.is-opp::after,.flow .to::after,.om-tag.in::after,.spark{animation:none}.chip.is-opp::after,.flow .to::after,.om-tag.in::after{display:none}}
 
 /* opportunity cards */
 .grid-opp{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
@@ -472,7 +484,7 @@ function renderBoard(){
   $('#board').innerHTML = lanes.map(([k,t,s])=>{
     const items=DATA.filter(d=>d.kind===k).sort((a,b)=>a.rank-b.rank);
     return `<div class="lane"><div class="lane-h">${t}<small>${items.length}건 · ${s}</small></div><div class="chips">${
-      items.map(d=>`<button class="chip ${d.opp?'is-opp':''} ${d.risk?'is-risk':''}" style="--cc:var(${(AREAS[d.area]||AREAS.nut).c})" data-go="${d.id}" title="${esc(d.maker)} ${esc(d.name)}"><span class="r">${d.rank}</span>${esc(d.name)}</button>`).join('')
+      items.map((d,i)=>`<button class="chip ${d.opp?'is-opp':''} ${d.risk?'is-risk':''}" style="--cc:var(${(AREAS[d.area]||AREAS.nut).c});--i:${i%5}" data-go="${d.id}" title="${esc(d.maker)} ${esc(d.name)}${d.opp?' · 유한 대체: '+esc(d.opp.yh):''}"><span class="r">${d.rank}</span>${d.opp?'<span class="spark" aria-hidden="true">✦</span>':''}${esc(d.name)}</button>`).join('')
     }</div></div>`;
   }).join('');
 }
@@ -486,7 +498,7 @@ function renderOpp(){
       <div class="flow">
         <div class="from"><b>${nm(d.name)}</b><small>${esc(d.ing)}</small></div>
         <div class="arr" aria-hidden="true">→</div>
-        <div class="to"><b>${nm(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div>
+        <div class="to" style="--i:${i%5}"><b>${nm(d.opp.yh)}<span class="spark" aria-hidden="true">✦</span></b><small>${esc(d.opp.yhIng)}</small></div>
       </div>
       <div class="meter" aria-hidden="true"><i style="width:100%"></i></div>
       <p>${esc(d.opp.why)}</p>
@@ -501,7 +513,7 @@ function renderOpp(){
       <div class="om-body">
         <div class="om-row"><span class="om-tag out">품절</span><div><b>${nm(d.name)}</b><small>${esc(d.maker)} · ${esc(d.ing)}</small></div></div>
         <div class="om-arrow" aria-hidden="true"><span>↓</span></div>
-        <div class="om-row to"><span class="om-tag in">유한</span><div><b>${nm(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div></div>
+        <div class="om-row to"><span class="om-tag in" style="--i:${i%5}">유한</span><div><b>${nm(d.opp.yh)}<span class="spark" aria-hidden="true">✦</span></b><small>${esc(d.opp.yhIng)}</small></div></div>
       </div>
       <details><summary>전환 포인트</summary>
         <div class="om-more"><span>${esc(d.opp.why)}</span><span><b>실행</b> · ${esc(d.opp.act)}</span></div>
