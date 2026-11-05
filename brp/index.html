@@ -46,7 +46,10 @@ button{font-family:inherit;cursor:pointer}
 .hero h1 .tag{font-size:13px;font-weight:600;letter-spacing:0;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:5px 14px}
 .hero p{margin:12px 0 14px;color:var(--sub);max-width:68ch;font-size:14.5px}
 .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--sub)}
-.pill b{color:var(--ink)}
+.pill b{color:var(--ink);font-variant-numeric:tabular-nums}
+.pill .pi{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;line-height:1.3}
+.pill .sep{width:1px;height:12px;background:var(--line);flex:none}
+.pill .dot{flex:none}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--opp)}
 .stats{display:flex;gap:30px}
 .stat{text-align:right}
@@ -82,12 +85,15 @@ button{font-family:inherit;cursor:pointer}
 .grid-opp{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .oc{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--card);min-width:0}
 .oc-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
-.oc-src{font-size:12px;color:var(--sub)}
+.oc-src{font-size:12px;color:var(--sub);word-break:keep-all;min-width:0}
+.nw{white-space:nowrap}
+.oc-top .badge,.om-head .badge{flex:none;white-space:nowrap}
+.flow b,.flow small{word-break:keep-all;overflow-wrap:break-word}
 .flow{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);align-items:center;gap:6px}
 .flow .from,.flow .to{border-radius:8px;padding:9px 10px;min-width:0}
 .flow .from{background:var(--soft)}
 .flow .to{background:var(--opp-soft)}
-.flow b{display:block;font-size:13.5px;line-height:1.35}
+.flow b{display:block;font-size:13px;line-height:1.35;letter-spacing:-.01em}
 .flow small{display:block;font-size:11.5px;color:var(--sub)}
 .flow .to small{color:var(--opp)}
 .flow .arr{text-align:center;color:var(--opp);font-weight:900}
@@ -148,7 +154,7 @@ tr.flash td{background:var(--accent-soft)}
 .om-tag{font-size:11px;font-weight:700;text-align:center;border-radius:6px;padding:3px 0;margin-top:2px}
 .om-tag.out{background:var(--risk-soft);color:var(--risk)}
 .om-tag.in{background:var(--opp);color:#fff}
-.om-row b{display:block;font-size:15.5px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
+.om-row b{display:block;font-size:15.5px;line-height:1.35;word-break:keep-all;overflow-wrap:break-word}
 .om-row small{display:block;font-size:12.5px;color:var(--sub);margin-top:2px;word-break:keep-all}
 .om-row.to b{color:var(--opp)}
 .om-arrow{display:grid;grid-template-columns:44px 1fr;gap:10px;color:var(--mute);font-size:14px;line-height:1;padding:6px 0}
@@ -189,6 +195,11 @@ tr.flash td{background:var(--accent-soft)}
   .sec-opp h2{font-size:18px}
   .sec-opp h2 .badge{display:none}
   .hero h1{font-size:26px}
+  .pill{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;gap:0;border-radius:12px;padding:10px 0;width:100%}
+  .pill .pi{flex-direction:column;justify-content:center;gap:2px;text-align:center;white-space:normal;font-size:12px;padding:0 10px;min-width:0}
+  .pill .pi b{font-size:15px;white-space:nowrap}
+  .pill .sep{height:100%;min-height:32px}
+  .pill .dot{display:none}
   .stats{border-top:1px solid var(--line);padding-top:12px;width:100%;justify-content:space-between}
   /* table → 카드형 */
   .tbl-wrap{border:0;overflow:visible}
@@ -216,7 +227,7 @@ tr.flash td{background:var(--accent-soft)}
     <div>
       <h1>BRP insight 수급대시보드 <span class="tag">Opportunity · Risk</span></h1>
       <p>국내 의약품 품절 순위(신규 진입 Top20·장기 지속 Top20)를 기준으로, 경쟁사 품절 품목 중 유한양행 품목으로 처방 전환이 가능한 건은 <b style="color:var(--opp)">기회요인</b>으로, 유한양행 품목의 품절과 대체 수요 유입에 따른 공급 부담은 <b style="color:var(--risk)">위험요인</b>으로 분류했습니다. 보드의 품목을 누르면 아래 표의 해당 행으로 이동합니다.</p>
-      <span class="pill"><span class="dot"></span>기준일 <b id="asof">2026.11.05</b> · 신규·장기 Top20 <b id="cnt-src">40</b>건</span>
+      <span class="pill"><span class="pi"><span class="dot"></span>기준일 <b id="asof">2026.11.05</b></span><span class="sep" aria-hidden="true"></span><span class="pi">신규·장기 Top20 <b><span id="cnt-src">40</span>건</b></span></span>
     </div>
     <div class="stats">
       <div class="stat"><div class="n" id="s-all">40</div><div class="l">모니터링 품목</div></div>
@@ -235,8 +246,8 @@ tr.flash td{background:var(--accent-soft)}
 
   <section class="panel sec-opp" aria-labelledby="h-opp">
     <h2 id="h-opp">기회요인 <span class="badge b-opp">경쟁사 품절 → 유한 전환</span><span class="m-count" id="opp-count"></span></h2>
-    <p class="desc d-only">성분이 달라 약국 대체조제는 불가하므로, 처방의 대상 <b>계열 전환(처방 변경) 디테일</b>이 필요한 기회입니다. 우선순위는 품절 순위·순위 상승폭·품절 지속기간·전환 매력도를 합산한 값입니다. 유한양행 취급 여부와 현재 재고는 배포 전 확인해 주세요.</p>
-    <p class="m-desc">경쟁사 품절 품목을 유한양행 품목으로 처방 전환할 수 있는 기회입니다. 우선순위 순으로 정렬했고, 품목을 누르면 전환 포인트가 열립니다.</p>
+    <p class="desc d-only">성분이 달라 약국 대체조제는 불가하므로, 처방의 대상 <b>계열 전환(처방 변경) 디테일</b>이 필요한 기회입니다. 유한양행 취급 여부와 현재 재고는 배포 전 확인해 주세요.</p>
+    <p class="m-desc">경쟁사 품절 품목을 유한양행 품목으로 처방 전환할 수 있는 기회입니다. 신규·장기 품절 순위 순으로 정렬했고, 품목을 누르면 전환 포인트가 열립니다.</p>
     <div class="grid-opp" id="opp"></div>
     <ol class="opp-list" id="opp-m"></ol>
   </section>
@@ -425,6 +436,8 @@ let DATA = [];
 const $ = s=>document.querySelector(s);
 const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isYH = m=>/유한/.test(m);
+// 제품명은 이름과 함량 사이에서만 줄바꿈되도록 <wbr> 삽입
+const nm = s=>esc(s).replace(/([가-힣])(\d)/,'$1<wbr>$2');
 
 function changeNum(v){ const m=String(v).match(/([▲▼+-])?\s*(\d+)/); if(!m) return 0; const n=+m[2]; return (m[1]==='▼'||m[1]==='-')?-n:n; }
 function weeks(v){ const m=String(v).match(/(\d+)\s*주/); return m?+m[1]:0; }
@@ -464,33 +477,31 @@ function renderBoard(){
   }).join('');
 }
 function renderOpp(){
-  const list=DATA.filter(d=>d.opp).sort((a,b)=>b.score-a.score);
+  const list=DATA.filter(d=>d.opp).sort((a,b)=>(a.kind==='장기')-(b.kind==='장기')||a.rank-b.rank);
   const max=Math.max(...list.map(d=>d.score),1);
   $('#opp').innerHTML = list.length? list.map((d,i)=>{
-    const lv = d.score>=max*0.75?['높음','b-opp']:d.score>=max*0.45?['보통','b-warn']:['낮음','b-mute'];
-    const tr = d.kind==='신규' ? (d.val==='-'?'순위 유지':d.val) : d.val;
+    const tr = d.kind==='신규' ? (d.val==='-'?'–':d.val) : d.val;
     return `<article class="oc">
-      <div class="oc-top"><span class="oc-src">${d.kind} 품절 ${d.rank}위 · ${esc(tr)} · ${esc(d.maker)}</span><span class="badge ${lv[1]}">우선 ${lv[0]}</span></div>
+      <div class="oc-top"><span class="oc-src"><span class="nw">${d.rank}위 · ${esc(tr)}</span> · <span class="nw">${esc(d.maker)}</span></span><span class="badge ${d.kind==='신규'?'b-warn':'b-risk'}">${d.kind} 품절</span></div>
       <div class="flow">
-        <div class="from"><b>${esc(d.name)}</b><small>${esc(d.ing)}</small></div>
+        <div class="from"><b>${nm(d.name)}</b><small>${esc(d.ing)}</small></div>
         <div class="arr" aria-hidden="true">→</div>
-        <div class="to"><b>${esc(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div>
+        <div class="to"><b>${nm(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div>
       </div>
-      <div class="meter" aria-label="우선순위 점수 ${d.score}"><i style="width:${Math.round(d.score/max*100)}%"></i></div>
+      <div class="meter" aria-hidden="true"><i style="width:100%"></i></div>
       <p>${esc(d.opp.why)}</p>
       <div class="act"><b>실행</b> · ${esc(d.opp.act)}</div>
     </article>`;}).join('') : `<p class="msg">현재 데이터에서 대체 후보가 매칭된 품목이 없습니다.</p>`;
   $('#s-opp').textContent=list.length;
   $('#opp-count').textContent=list.length+'건';
   $('#opp-m').innerHTML = list.map((d,i)=>{
-    const lv = d.score>=max*0.75?['높음','b-opp']:d.score>=max*0.45?['보통','b-warn']:['낮음','b-mute'];
-    const tr = d.kind==='신규' ? (d.val==='-'?'순위 유지':d.val) : d.val;
+    const tr = d.kind==='신규' ? (d.val==='-'?'–':d.val) : d.val;
     return `<li class="om">
-      <div class="om-head"><span><span class="no">${i+1}</span>${d.kind} ${d.rank}위 · ${esc(tr)}</span><span class="badge ${lv[1]}">우선 ${lv[0]}</span></div>
+      <div class="om-head"><span class="nw"><span class="no">${i+1}</span>${d.rank}위 · ${esc(tr)}</span><span class="badge ${d.kind==='신규'?'b-warn':'b-risk'}">${d.kind} 품절</span></div>
       <div class="om-body">
-        <div class="om-row"><span class="om-tag out">품절</span><div><b>${esc(d.name)}</b><small>${esc(d.maker)} · ${esc(d.ing)}</small></div></div>
+        <div class="om-row"><span class="om-tag out">품절</span><div><b>${nm(d.name)}</b><small>${esc(d.maker)} · ${esc(d.ing)}</small></div></div>
         <div class="om-arrow" aria-hidden="true"><span>↓</span></div>
-        <div class="om-row to"><span class="om-tag in">유한</span><div><b>${esc(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div></div>
+        <div class="om-row to"><span class="om-tag in">유한</span><div><b>${nm(d.opp.yh)}</b><small>${esc(d.opp.yhIng)}</small></div></div>
       </div>
       <details><summary>전환 포인트</summary>
         <div class="om-more"><span>${esc(d.opp.why)}</span><span><b>실행</b> · ${esc(d.opp.act)}</span></div>
@@ -542,7 +553,7 @@ function renderTable(){
     const vcls = d.kind==='신규' ? (c>0?'up':c<0?'down':'') : 'up';
     const judge = d.risk?'<span class="badge b-risk">위험 · 방어</span>':d.opp?'<span class="badge b-opp">기회</span>':'<span class="badge b-mute">모니터링</span>';
     const yh = d.risk?'<span class="yh-cell risk">재입고 일정 공유 · 이탈 거래처 관리</span>':d.opp?`<span class="yh-cell">${esc(d.opp.yh)}</span>`:'<span style="color:var(--mute)">대체 후보 없음</span>';
-    return `<tr id="${d.id}"><td class="c nw t-kind">${d.kind}</td><td class="c num t-rank">${d.rank}</td><td class="t-maker">${esc(d.maker)}</td><td class="cell-name t-name"><b>${esc(d.name)}</b></td>
+    return `<tr id="${d.id}"><td class="c nw t-kind">${d.kind}</td><td class="c num t-rank">${d.rank}</td><td class="t-maker">${esc(d.maker)}</td><td class="cell-name t-name"><b>${nm(d.name)}</b></td>
       <td class="t-ing"><span class="cell-ing"><span class="area-dot" style="background:var(${(AREAS[d.area]||AREAS.nut).c})"></span><span>${esc(d.ing)}</span></span></td>
       <td class="c num t-val ${vcls}">${esc(d.val)}</td><td class="c t-judge">${judge}</td><td class="t-yh">${yh}</td></tr>`;
   }).join('') || `<tr><td colspan="8" class="msg">조건에 맞는 품목이 없습니다.</td></tr>`;
