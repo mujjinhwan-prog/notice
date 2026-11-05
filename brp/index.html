@@ -56,6 +56,18 @@ button{font-family:inherit;cursor:pointer}
 .stat .n{font-family:var(--f-num);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
 .stat .l{font-size:12px;color:var(--sub);margin-top:6px}
 .stat.opp .n{color:var(--opp)} .stat.risk .n{color:var(--risk)}
+/* 기회요인 통계 하이라이트 */
+.stat.opp{position:relative;isolation:isolate}
+.stat.opp::before{content:"";position:absolute;inset:-10px -14px;border-radius:14px;z-index:-1;background:var(--opp-soft);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--opp) 35%,transparent);animation:statglow 2.6s ease-in-out infinite}
+.stat.opp .n{background:linear-gradient(110deg,var(--opp) 38%,#B8F5DC 50%,var(--opp) 62%);background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:textshine 3s ease-in-out infinite}
+.stat.opp .l{color:var(--opp);font-weight:700}
+.stat.opp .star{position:absolute;top:-8px;right:-10px;font-size:15px;color:var(--warn);animation:twinkle 1.6s ease-in-out infinite;pointer-events:none}
+.stat.opp .star.s2{top:auto;bottom:16px;right:auto;left:-11px;font-size:10px;animation-delay:.8s}
+@keyframes textshine{0%{background-position:100% 0}60%,100%{background-position:0 0}}
+@keyframes statglow{0%,100%{box-shadow:0 0 0 1px color-mix(in srgb,var(--opp) 35%,transparent)}50%{box-shadow:0 0 0 1px var(--opp),0 0 18px 2px color-mix(in srgb,var(--opp) 40%,transparent)}}
+@media (prefers-reduced-motion:reduce){.stat.opp::before,.stat.opp .n,.stat.opp .star{animation:none}}
 
 /* panel */
 .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px}
@@ -212,7 +224,7 @@ tr.flash td{background:var(--accent-soft)}
   .pill .pi b{font-size:15px;white-space:nowrap}
   .pill .sep{height:100%;min-height:32px}
   .pill .dot{display:none}
-  .stats{border-top:1px solid var(--line);padding-top:12px;width:100%;justify-content:space-between}
+  .stats{border-top:1px solid var(--line);padding:22px 4px 8px;width:100%;justify-content:space-between}
   /* table → 카드형 */
   .tbl-wrap{border:0;overflow:visible}
   table{min-width:0;table-layout:auto}
@@ -243,7 +255,7 @@ tr.flash td{background:var(--accent-soft)}
     </div>
     <div class="stats">
       <div class="stat"><div class="n" id="s-all">40</div><div class="l">모니터링 품목</div></div>
-      <div class="stat opp"><div class="n" id="s-opp">0</div><div class="l">기회요인</div></div>
+      <div class="stat opp"><span class="star" aria-hidden="true">✦</span><span class="star s2" aria-hidden="true">✦</span><div class="n" id="s-opp">0</div><div class="l">기회요인</div></div>
       <div class="stat risk"><div class="n" id="s-risk">0</div><div class="l">유한 품절(방어)</div></div>
     </div>
   </header>
