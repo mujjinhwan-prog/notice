@@ -14,46 +14,36 @@
     padding-left:max(16px, env(safe-area-inset-left,0px));
     padding-right:max(16px, env(safe-area-inset-right,0px));
   }
-  .share-bar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    background:#FFFFFF;
-    border:2px solid #C9C6BC;
-    border-radius:10px;
-    padding:14px 22px;
-    margin-bottom:18px;
-    flex-wrap:wrap;
-  }
-  .share-label{
-    font-weight:800;
-    font-size:14px;
-    letter-spacing:0.04em;
-    color:#6B6858;
-    text-transform:uppercase;
-  }
   .pdf-btn{
     appearance:none;
-    border:none;
+    border:1px solid #D81E27;
     cursor:pointer;
-    background:#17181A;
-    color:#F3F1EA;
+    background:#E8232C;
+    color:#FFFFFF;
     font-family:"Noto Sans KR",sans-serif;
     font-weight:800;
-    font-size:15px;
-    padding:11px 22px;
+    font-size:9px;
+    padding:5px 10px;
     border-radius:999px;
     display:inline-flex;
     align-items:center;
-    gap:9px;
+    gap:4px;
     transition:opacity .15s;
     white-space:nowrap;
+    box-shadow:0 2px 5px rgba(216,30,39,0.28);
   }
-  .pdf-btn:hover{ opacity:0.82; }
+  .pdf-btn:hover{ opacity:0.85; }
   .pdf-btn:disabled{ opacity:0.55; cursor:default; }
-  .pdf-btn svg{ width:16px; height:16px; display:block; flex:0 0 auto; }
-  .masthead{ text-align:center; padding:8px 0 22px; }
+  .pdf-btn svg{ width:9px; height:9px; display:block; flex:0 0 auto; }
+  .masthead{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    text-align:center;
+    padding:8px 0 22px;
+  }
   .masthead h1{
     font-family:"Noto Sans KR", sans-serif;
     font-weight:900;
@@ -392,9 +382,8 @@
   }
   @media (max-width:680px){
     .stage{ padding-top:16px; padding-bottom:16px; }
-    .share-bar{ flex-direction:column; align-items:stretch; text-align:center; padding:12px 14px; margin-bottom:12px; }
-    .pdf-btn{ justify-content:center; width:100%; padding:10px 18px; }
-    .masthead{ padding:4px 0 12px; }
+    .masthead{ flex-direction:column; gap:10px; padding:4px 0 12px; }
+    .pdf-btn{ justify-content:center; width:auto; padding:5px 10px; }
     .masthead .brand-main{ font-size:28px; }
     .masthead .brand-sub{ font-size:14px; display:block; margin-top:4px; }
     .datebar{ padding:12px 16px 14px; margin-bottom:16px; }
@@ -432,15 +421,12 @@
   }
 </style>
 <div class="stage">
-  <div class="share-bar">
-    <span class="share-label">YH DBT 카드뉴스공유 · 2026.11.06 발행</span>
-    <button id="pdfDownloadBtn" class="pdf-btn" type="button">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 18v2a1 1 0 001 1h14a1 1 0 001-1v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="pdf-btn-label">PDF 다운로드</span>
-    </button>
-  </div>
   <div class="masthead">
     <h1><span class="brand-main">Daily Break Talk</span> <span class="brand-sub">: 하루 3분, 가벼운 쉼표 토크</span></h1>
+    <button id="pdfDownloadBtn" class="pdf-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 18v2a1 1 0 001 1h14a1 1 0 001-1v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="pdf-btn-label">PDF Download</span>
+    </button>
   </div>
   <div class="datebar">
     <div class="date-row">
